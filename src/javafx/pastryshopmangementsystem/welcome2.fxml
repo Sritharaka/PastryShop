@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.pastryshopmangementsystem.Welcome2Controller">
+    <stylesheets>
+        <URL value="@welcome2.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="91.0" layoutY="146.0" text="username" />
+      <Label layoutX="91.0" layoutY="254.0" text="password" />
+      <TextField fx:id="username" layoutX="190.0" layoutY="141.0" />
+      <TextField fx:id="password" layoutX="190.0" layoutY="249.0" />
+      <Button layoutX="251.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleButtonAction" text="log in" />
+   </children>
+</AnchorPane>

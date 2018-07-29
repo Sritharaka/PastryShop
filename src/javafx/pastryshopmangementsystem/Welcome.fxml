@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.pastryshopmangementsystem.WelcomeController">
+   <children>
+      <SplitPane dividerPositions="0.2727272727272727" layoutX="3.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="595.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="k" stylesheets="@welcome.css">
+               <children>
+                  <Label graphicTextGap="8.0" layoutX="252.0" layoutY="42.0" prefHeight="35.0" prefWidth="137.0" text="WELCOME">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <stylesheets>
+                        <!--<URL value="@welcome.css" />-->                        
+                     </stylesheets>
+                     <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="#541d1d" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="593.0">
+               <effect>
+                  <ImageInput x="10.0" y="10.0">
+                     <source>
+                        <Image url="file:/C:/Users/ASUS/Downloads/Pastry%20Shop/cakewebsitetemplate/images/pastries.jpg" />
+                     </source>
+                  </ImageInput>
+               </effect>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
