@@ -32,7 +32,7 @@ public class Welcome2Controller implements Initializable {
      System.out.println("adc");
      System.out.print(username.getText());
      System.out.print(password.getText());
-     if( ("Admin".equals(username.getText()) && ("password").equals(password.getText())) || ("Cashire".equals(username.getText()) && ("12345").equals(password.getText()))) {
+     if( ("Admin2".equals(username.getText()) && ("password").equals(password.getText())) || ("Cashire".equals(username.getText()) && ("12345").equals(password.getText()))) {
          
          System.out.print("log in");
          
