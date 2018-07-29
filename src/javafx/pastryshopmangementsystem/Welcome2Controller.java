@@ -32,30 +32,43 @@ public class Welcome2Controller implements Initializable {
      System.out.println("adc");
      System.out.print(username.getText());
      System.out.print(password.getText());
-     if( ("Admin2".equals(username.getText()) && ("password").equals(password.getText())) || ("Cashier".equals(username.getText()) && ("12345").equals(password.getText()))) {
+     
+     if( "Admin2".equals(username.getText()) && ("password").equals(password.getText())){
+         System.out.print("Admin");
+         
+           Stage stage = new Stage();
+     Parent root = FXMLLoader.load(getClass().getResource("/Admin/Admin.fxml"));
+           Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+     }else if
+                    ( "Cashier".equals(username.getText()) && ("12345").equals(password.getText())) {
          
          System.out.print("log in");
          
         
      
-     Stage stage = new Stage();
+   
      Stage stage1 = new Stage();
-          Parent root = FXMLLoader.load(getClass().getResource("/Admin/Admin.fxml"));
+          
           Parent root1 = FXMLLoader.load(getClass().getResource("/Cashier/Cashier.fxml")); 
-        Scene scene = new Scene(root);
+        
         Scene scene1 = new Scene(root1);
-        stage.setScene(scene);
+       
         stage1.setScene(scene1);
 
 
-        stage.show();
+       
+        stage1.show();
  }
  
      else {
        
           System.out.println("Errow");
      
-     }
+        }
+                
+             
  }
     /**
      * Initializes the controller class.
