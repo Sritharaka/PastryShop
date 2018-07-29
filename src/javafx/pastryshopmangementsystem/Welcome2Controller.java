@@ -32,7 +32,7 @@ public class Welcome2Controller implements Initializable {
      System.out.println("adc");
      System.out.print(username.getText());
      System.out.print(password.getText());
-     if( ("Admin2".equals(username.getText()) && ("password").equals(password.getText())) || ("Cashire".equals(username.getText()) && ("12345").equals(password.getText()))) {
+     if( ("Admin2".equals(username.getText()) && ("password").equals(password.getText())) || ("Cashier".equals(username.getText()) && ("12345").equals(password.getText()))) {
          
          System.out.print("log in");
          
@@ -41,7 +41,7 @@ public class Welcome2Controller implements Initializable {
      Stage stage = new Stage();
      Stage stage1 = new Stage();
           Parent root = FXMLLoader.load(getClass().getResource("/Admin/Admin.fxml"));
-          Parent root1 = FXMLLoader.load(getClass().getResource("/Cashire/Cashire.fxml")); 
+          Parent root1 = FXMLLoader.load(getClass().getResource("/Cashier/Cashier.fxml")); 
         Scene scene = new Scene(root);
         Scene scene1 = new Scene(root1);
         stage.setScene(scene);

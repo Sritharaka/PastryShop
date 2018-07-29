@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Cashire.PaymentController">
+   <children>
+      <Label layoutX="40.0" layoutY="81.0" text="Total Amount" />
+      <Label layoutX="40.0" layoutY="167.0" text="Date" />
+      <Label layoutX="40.0" layoutY="210.0" text="Time" />
+      <Label layoutX="39.0" layoutY="124.0" text="Pay Type" />
+      <TextField layoutX="227.0" layoutY="76.0" />
+      <TextField layoutX="227.0" layoutY="119.0" />
+      <TextField layoutX="227.0" layoutY="173.0" />
+      <TextField layoutX="227.0" layoutY="216.0" />
+   </children>
+</AnchorPane>
