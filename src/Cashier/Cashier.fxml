@@ -12,5 +12,6 @@
       <Button layoutX="229.0" layoutY="65.0" mnemonicParsing="false" text="Order" />
       <Button layoutX="355.0" layoutY="65.0" mnemonicParsing="false" text="Stock" />
       <Button layoutX="465.0" layoutY="65.0" mnemonicParsing="false" text="Sale" />
+      <AnchorPane fx:id="content" layoutX="13.0" layoutY="113.0" prefHeight="481.0" prefWidth="606.0" />
    </children>
 </AnchorPane>
