@@ -10,7 +10,7 @@
    <children>
       <Button layoutX="99.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleButtonAction" text="payment" />
       <Button fx:id="Order" layoutX="229.0" layoutY="65.0" mnemonicParsing="false" onAction="#OrderButtonAction" text="Order" />
-      <Button layoutX="355.0" layoutY="65.0" mnemonicParsing="false" text="Stock" />
+      <Button layoutX="355.0" layoutY="65.0" mnemonicParsing="false" onAction="#StockActionButtonClicked" text="Stock" />
       <Button layoutX="465.0" layoutY="65.0" mnemonicParsing="false" text="Sale" />
       <AnchorPane fx:id="content" layoutX="19.0" layoutY="187.0" prefHeight="407.0" prefWidth="568.0" />
    </children>

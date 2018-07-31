@@ -20,35 +20,39 @@ import javafx.scene.layout.AnchorPane;
  * @author ASUS
  */
 public class CashierController implements Initializable {
-@FXML
-private AnchorPane content;
-    
-     @FXML
- private void handleButtonAction(ActionEvent event) throws IOException {
-     // Button was clicked, do something...
-     System.out.println("abc");
-     
-     
- content.getChildren().setAll((AnchorPane)FXMLLoader.load(getClass().getResource("/Payment/Payment.fxml"))); }
-   
 
-   @FXML
- private void OrderButtonAction(ActionEvent event) throws IOException {
-     // Button was clicked, do something...
-     System.out.println("abc");
-     
-     
- content.getChildren().setAll((AnchorPane)FXMLLoader.load(getClass().getResource("Order.fxml")));
- }
-    
- /**
+    @FXML
+    private AnchorPane content;
+
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException {
+        // Button was clicked, do something...
+        System.out.println("abc");
+
+        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("payment.fxml")));
+    }
+
+    @FXML
+    private void OrderButtonAction(ActionEvent event) throws IOException {
+        // Button was clicked, do something...
+        System.out.println("abc");
+
+        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("Order.fxml")));
+    }
+
+       @FXML
+    private void StockActionButtonClicked(ActionEvent event) throws IOException {
+        // Button was clicked, do something...
+        System.out.println("123");
+
+        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("Stock.fxml")));
+    }
+    /**
      * Initializes the controller class.
      */
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }
