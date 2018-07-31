@@ -20,24 +20,28 @@ import javafx.scene.layout.AnchorPane;
  * @author ASUS
  */
 public class CashierController implements Initializable {
-    @FXML
+@FXML
 private AnchorPane content;
     
-    
-    
- 
+     @FXML
+ private void handleButtonAction(ActionEvent event) throws IOException {
+     // Button was clicked, do something...
+     System.out.println("abc");
+     
+     
+ content.getChildren().setAll((AnchorPane)FXMLLoader.load(getClass().getResource("/Payment/Payment.fxml"))); }
+   
 
-@FXML
-private void handleButtonAction(ActionEvent event) throws IOException {        
+   @FXML
+ private void OrderButtonAction(ActionEvent event) throws IOException {
+     // Button was clicked, do something...
+     System.out.println("abc");
+     
+     
+ content.getChildren().setAll((AnchorPane)FXMLLoader.load(getClass().getResource("Order.fxml")));
+ }
     
-    
-        content.getChildren().setAll((AnchorPane)FXMLLoader.load(getClass().getResource("/Payment/Payment.fxml")));
-         content.getChildren().setAll((AnchorPane)FXMLLoader.load(getClass().getResource("/Order/Order.fxml")));
-}
-
-    
-    
-    /**
+ /**
      * Initializes the controller class.
      */
     

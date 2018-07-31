@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Cashier.OrderController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="73.0" layoutY="89.0" text="Order Id" />
       <Label layoutX="73.0" layoutY="132.0" text="Name" />
@@ -19,5 +18,6 @@
       <TextField layoutX="207.0" layoutY="185.0" />
       <TextField layoutX="207.0" layoutY="234.0" />
       <TextField layoutX="207.0" layoutY="284.0" />
+      <Button layoutX="251.0" layoutY="342.0" mnemonicParsing="false" text="Save" />
    </children>
 </AnchorPane>

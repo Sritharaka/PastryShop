@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Cashire.PaymentController">
+<AnchorPane id="AnchorPane" fx:id="content" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashire.PaymentController">
    <children>
       <Label layoutX="40.0" layoutY="81.0" text="Total Amount" />
       <Label layoutX="40.0" layoutY="167.0" text="Date" />

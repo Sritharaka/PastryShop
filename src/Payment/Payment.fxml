@@ -7,19 +7,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Payment.PaymentController">
+<AnchorPane id="AnchorPane" fx:id="content" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Payment.PaymentController">
     <stylesheets>
         <URL value="@payment.css" />
     </stylesheets>
    <children>
-      <Label layoutX="71.0" layoutY="87.0" text="Amount" />
-      <Label layoutX="71.0" layoutY="135.0" text="Date" />
-      <Label layoutX="71.0" layoutY="200.0" text="Time" />
-      <Label layoutX="71.0" layoutY="265.0" text="Balance" />
-      <TextField layoutX="227.0" layoutY="82.0" />
-      <TextField layoutX="227.0" layoutY="130.0" />
-      <TextField layoutX="227.0" layoutY="195.0" />
-      <TextField layoutX="227.0" layoutY="260.0" />
-      <Button layoutX="278.0" layoutY="330.0" mnemonicParsing="false" text="Print" />
+      <Label layoutX="48.0" layoutY="67.0" text="Total Amount" />
+      <Label layoutX="49.0" layoutY="116.0" text="Date" />
+      <Label layoutX="48.0" layoutY="160.0" text="Time" />
+      <TextField layoutX="232.0" layoutY="62.0" />
+      <TextField layoutX="232.0" layoutY="111.0" />
+      <TextField layoutX="232.0" layoutY="166.0" />
    </children>
 </AnchorPane>
