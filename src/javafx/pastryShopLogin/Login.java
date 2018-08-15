@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package javafx.pastryShopLogin;
-
 /**
  *
  * @author ASUS
  */
 public class Login {
     
+    public Login(){
+        
+    }
 }
