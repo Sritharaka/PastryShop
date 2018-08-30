@@ -29,55 +29,57 @@ import org.controlsfx.dialog.CommandLinksDialog.CommandLinksButtonType;
  * @author ASUS
  */
 public class Welcome2Controller implements Initializable {
-    
+
     @FXML
     private TextField username;
     @FXML
     private TextField password;
-    
+
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         // Button was clicked, do something...
         System.out.println("adc");
         System.out.print(username.getText());
         System.out.print(password.getText());
-        
+
         if ("Admin2".equals(username.getText()) && ("password").equals(password.getText())) {
             System.out.print("Admin");
-            
+
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("/Admin/Admin.fxml"));
             Scene scene = new Scene(root);
+            ((Node) event.getSource()).getScene().getWindow().hide();
             stage.setScene(scene);
             stage.show();
+            this.showMessage();
         } else if ("Cashier".equals(username.getText()) && ("12345").equals(password.getText())) {
-            
+
             System.out.print("log in");
-            
+
             Stage stage1 = new Stage();
-            
+
             Parent root1 = FXMLLoader.load(getClass().getResource("/Cashier/Cashier.fxml"));
-            
+
             Scene scene1 = new Scene(root1);
-            
+
             stage1.setScene(scene1);
-            
+
             ((Node) event.getSource()).getScene().getWindow().hide();
             stage1.show();
             showMessage();
         } else {
-            
+
             System.out.println("Error");
-            
+
         }
-        
+
     }
-    
+
     @FXML
-    private void handleExit(ActionEvent event){
+    private void handleExit(ActionEvent event) {
         Platform.exit();
     }
-    
+
     private void showMessage() {
         List<CommandLinksDialog.CommandLinksButtonType> links = new ArrayList<>();
         CommandLinksButtonType button = new CommandLinksButtonType("OK", true);
@@ -95,5 +97,5 @@ public class Welcome2Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
+
 }

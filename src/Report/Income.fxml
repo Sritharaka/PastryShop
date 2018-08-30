@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="28.0" layoutY="16.0" prefHeight="519.0" prefWidth="735.0">
+         <columns>
+            <TableColumn minWidth="0.0" prefWidth="0.0" text="Item" />
+            <TableColumn prefWidth="75.0" text="Date" />
+            <TableColumn prefWidth="150.0" text="ProductID" />
+            <TableColumn prefWidth="75.0" text="Item" />
+            <TableColumn prefWidth="75.0" text="Price" />
+            <TableColumn prefWidth="112.0" text="Quantity" />
+            <TableColumn prefWidth="103.0" text="Daily Income" />
+            <TableColumn prefWidth="127.0" text="Monthly Profit" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

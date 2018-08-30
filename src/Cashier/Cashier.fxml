@@ -6,15 +6,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="cashire" prefHeight="619.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.CashierController">
+<AnchorPane id="AnchorPane" fx:id="cashire" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.CashierController">
    <children>
-      <VBox layoutX="14.0" layoutY="68.0" prefHeight="191.0" prefWidth="88.0">
+      <VBox layoutX="14.0" layoutY="83.0" prefHeight="176.0" prefWidth="119.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="88.0" text="payment" />
-            <Button fx:id="Order" mnemonicParsing="false" onAction="#OrderButtonAction" prefHeight="43.0" prefWidth="88.0" text="Order" />
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="88.0" text="Sale" />
-            <Button mnemonicParsing="false" onAction="#StockActionButtonClicked" prefHeight="50.0" prefWidth="88.0" text="Stock" />
+            <Button mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="101.0" text="payment" />
+            <Button fx:id="Order" mnemonicParsing="false" onAction="#OrderButtonAction" prefHeight="40.0" prefWidth="101.0" text="Order" />
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="100.0" text="View Order" />
+            <Button fx:id="Stock" mnemonicParsing="false" onAction="#StockActionButtonClicked" prefHeight="49.0" prefWidth="101.0" text="Stock" />
          </children></VBox>
-      <AnchorPane fx:id="content" layoutX="132.0" layoutY="68.0" prefHeight="407.0" prefWidth="568.0" />
+      <AnchorPane fx:id="content" layoutX="132.0" layoutY="68.0" prefHeight="514.0" prefWidth="648.0" />
    </children>
 </AnchorPane>

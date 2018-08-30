@@ -21,17 +21,32 @@ import javafx.scene.layout.AnchorPane;
  */
 public class AdminController implements Initializable {
 
-     @FXML
+      @FXML
     private AnchorPane content;
 
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
+    private void IncomeButtonAction(ActionEvent event) throws IOException {
         // Button was clicked, do something...
         System.out.println("abc");
 
-        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("AddUser.fxml")));
+        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("/Report/Income.fxml")));
     }
-    
+
+    @FXML
+    private void EmployeButtonAction(ActionEvent event) throws IOException {
+        // Button was clicked, do something...
+        System.out.println("abc");
+
+        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("/Report/AddEmploye.fxml")));
+    }
+
+       @FXML
+    private void SupplierActionButtonClicked(ActionEvent event) throws IOException {
+        // Button was clicked, do something...
+        System.out.println("123");
+
+        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("/Report/AddSupplier.fxml")));
+    }
     
     /**
      * Initializes the controller class.

@@ -25,6 +25,10 @@ public class OrderController implements Initializable {
     @FXML
     private TextField orderId;
     @FXML
+    private TextField order;
+    @FXML
+    private TextField quantity;
+    @FXML
     private TextField name;
     @FXML
     private TextField phonenumber;
@@ -45,11 +49,15 @@ public class OrderController implements Initializable {
         String Mobile = phonenumber.getText().toString();
         String Date = date.getText();
         String Time = time.getText();
+        String Order = order.getText();
+        String Quantity = quantity.getText();
+        
+        
 
         try {
             String query = String.format("INSERT INTO mydb.order"
-                    + " values('%s', '%s', '%s', '%s', '%s', '1', '1')", OrderID, Name, Mobile, Date, Time);
-            
+                    + " values('%s', '%s', '%s', '%s', '%s','%s', '%s', '1', '1')", OrderID, Name, Mobile, Date, Time, Order, Quantity);
+
             connectionManager.connect();
             connectionManager.execute(query);
             connectionManager.close();
@@ -73,10 +81,7 @@ public class OrderController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-   
-    
-    
-    
+
     }
 
 }
