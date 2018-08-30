@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Payment;
+package Billing;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author ASUS
  */
-public class PaymentController implements Initializable {
+public class Billing implements Initializable {
 
     /**
      * Initializes the controller class.
