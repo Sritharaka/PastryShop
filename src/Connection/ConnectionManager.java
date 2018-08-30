@@ -31,6 +31,14 @@ public class ConnectionManager {
         Statement statement = conn.createStatement();
         statement.executeUpdate(query);
     }
+    
+    public ResultSet executeResults(String query) throws SQLException {        
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery(query);
+        statement.closeOnCompletion();
+        return rs;
+    }
+
 
     public void close() throws SQLException {
         if (conn != null) {

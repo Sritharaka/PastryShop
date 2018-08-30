@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import tornadofx.control.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -14,18 +16,22 @@
                <children>
                   <VBox prefHeight="400.0" prefWidth="230.0" spacing="15.0">
                      <children>
-                        <Label text="Total Amount" />
+                        <Label text="Quantity" />
                         <Label text="Item" />
                         <Label text="Date" />
-                        <Label text="Time" />
+                        <Label text="Total Amount">
+                           <VBox.margin>
+                              <Insets top="38.0" />
+                           </VBox.margin>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox prefHeight="400.0" prefWidth="371.0" spacing="15.0">
                      <children>
-                        <TextField fx:id="amont" prefHeight="31.0" prefWidth="218.0" />
-                        <TextField fx:id="item" prefHeight="31.0" prefWidth="218.0" />
-                        <DatePicker fx:id="date" />
-                        <TextField />
+                        <TextField fx:id="quantity" prefHeight="31.0" prefWidth="218.0" />
+                        <ComboBox fx:id="items" prefHeight="31.0" prefWidth="370.0" />
+                        <DateTimePicker fx:id="datetime" prefHeight="31.0" prefWidth="368.0" />
+                        <Label fx:id="price" prefHeight="21.0" prefWidth="368.0" />
                      </children>
                   </VBox>
                </children>
