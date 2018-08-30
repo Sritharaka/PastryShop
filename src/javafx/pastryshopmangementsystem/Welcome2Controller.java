@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -70,6 +71,11 @@ public class Welcome2Controller implements Initializable {
             
         }
         
+    }
+    
+    @FXML
+    private void handleExit(ActionEvent event){
+        Platform.exit();
     }
     
     private void showMessage() {

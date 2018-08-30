@@ -6,16 +6,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:controller="Cashier.PaymentController" id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.PaymentController">
    <children>
-      <Label layoutX="40.0" layoutY="81.0" text="Total Amount" />
-      <Label layoutX="40.0" layoutY="167.0" text="Date" />
-      <Label layoutX="40.0" layoutY="210.0" text="Time" />
-      <Label layoutX="39.0" layoutY="124.0" text="Pay Type" />
-      <TextField layoutX="227.0" layoutY="76.0" prefHeight="31.0" prefWidth="218.0" />
-      <TextField layoutX="227.0" layoutY="119.0" prefHeight="31.0" prefWidth="218.0" />
-      <TextField layoutX="227.0" layoutY="216.0" />
-      <Button layoutX="221.0" layoutY="298.0" mnemonicParsing="false" text="Print" />
-      <DatePicker layoutX="227.0" layoutY="173.0" />
+      <AnchorPane fx:id="content" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="253.0" prefWidth="600.0">
+               <children>
+                  <VBox prefHeight="400.0" prefWidth="230.0" spacing="15.0">
+                     <children>
+                        <Label text="Total Amount" />
+                        <Label text="Item" />
+                        <Label text="Date" />
+                        <Label text="Time" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="400.0" prefWidth="371.0" spacing="15.0">
+                     <children>
+                        <TextField fx:id="amont" prefHeight="31.0" prefWidth="218.0" />
+                        <TextField fx:id="item" prefHeight="31.0" prefWidth="218.0" />
+                        <DatePicker fx:id="date" />
+                        <TextField />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <Button layoutX="221.0" layoutY="298.0" mnemonicParsing="false" onAction="#print" text="Print" />
    </children>
 </AnchorPane>

@@ -7,7 +7,12 @@ package Cashier;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import print.PrintManager;
 
 /**
  * FXML Controller class
@@ -15,6 +20,9 @@ import javafx.fxml.Initializable;
  * @author ASUS
  */
 public class PaymentController implements Initializable {
+    
+    @FXML
+    private AnchorPane content;
 
     /**
      * Initializes the controller class.
@@ -22,6 +30,12 @@ public class PaymentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }   
+    
+    @FXML
+    private void print(ActionEvent event){
+        PrintManager manager = new PrintManager();
+        manager.pageSetup(content, (Stage) content.getScene().getWindow());
+    }
     
 }

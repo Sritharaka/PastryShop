@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  */
 public class PrintManager {
 
-    private void pageSetup(Node node, Stage owner) {
+    public void pageSetup(Node node, Stage owner) {
 
         // Create the PrinterJob
         PrinterJob job = PrinterJob.createPrinterJob();
