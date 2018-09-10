@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 /**
  * FXML Controller class
@@ -45,7 +46,7 @@ public class CashierController implements Initializable {
         // Button was clicked, do something...
         System.out.println("123");
 
-        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("Stock.fxml")));
+        content.getChildren().setAll((StackPane) FXMLLoader.load(getClass().getResource("Stock.fxml")));
     }
     /**
      * Initializes the controller class.

@@ -10,11 +10,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.PaymentController">
    <children>
-      <AnchorPane fx:id="content" prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane fx:id="content" prefHeight="509.0" prefWidth="685.0">
          <children>
-            <HBox prefHeight="253.0" prefWidth="600.0">
+            <HBox prefHeight="241.0" prefWidth="565.0">
                <children>
-                  <VBox prefHeight="400.0" prefWidth="230.0" spacing="15.0">
+                  <VBox prefHeight="241.0" prefWidth="254.0" spacing="15.0">
                      <children>
                         <Label text="Quantity" />
                         <Label text="Item" />

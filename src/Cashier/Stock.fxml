@@ -8,35 +8,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="spProductContent" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../style/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.OrderController">
+<StackPane fx:id="spProductContent" prefHeight="400.0" prefWidth="1567.0" stylesheets="@../style/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.StockController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="494.0" prefWidth="834.0">
          <children>
             <BorderPane layoutX="220.0" layoutY="140.0" prefHeight="479.0" prefWidth="639.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <center>
-                  <TableView fx:id="StockActionButtonClicked" editable="true"  prefHeight="249.0" prefWidth="556.0" style="-fx-background-color: none; -fx-border-color: none;" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                  <TableView fx:id="tblViewCurrentStore" editable="true" prefHeight="649.0" prefWidth="725.0" style="-fx-background-color: none; -fx-border-color: none;" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
                     <columns>
-                      <TableColumn fx:id="tblClmProductId" prefWidth="150.0" text="ID" />
-                      <TableColumn fx:id="tblClmProductName" prefWidth="150.0" text="NAME" />
-                        <TableColumn fx:id="tblClmProductquantity" prefWidth="100.0" text="Quantity" />
+                      <TableColumn fx:id="tblViewUnit" prefWidth="132.0" text="ID" />
+                      <TableColumn fx:id="tblClmProductName" prefWidth="151.0" text="NAME" />
+                        <TableColumn fx:id="tblClmProductquantity" prefWidth="98.0" text="Quantity" />
                         <TableColumn fx:id="tblClmProductUnit" prefWidth="75.0" text="Unit" />
-                        <TableColumn fx:id="tblClmProductRMA" prefWidth="100.0" text="RMA" />
-                        <TableColumn fx:id="tblClmProductSupplyer" prefWidth="150.0" text="Supplier" />
-                        <TableColumn fx:id="tblClmProductBrand" prefWidth="100.0" text="Brand" />
-                        <TableColumn fx:id="tblClmProductCatagory" prefWidth="100.0" text="Category" />
-                        <TableColumn fx:id="tblClmProductPursesPrice" prefWidth="150.0" text="Purses Price" />
+                        <TableColumn fx:id="tblClmProductSupplyer" prefWidth="140.0" text="Supplier" />
+                        <TableColumn fx:id="tblClmProductBrand" prefWidth="98.0" text="Brand" />
+                        <TableColumn fx:id="tblClmProductCatagory" minWidth="0.0" prefWidth="128.0" text="Category" />
+                        <TableColumn fx:id="tblClmProductPursesPrice" prefWidth="153.0" text="Purses Price" />
                         <TableColumn fx:id="tblClmProductSellPrice" prefWidth="150.0" text="Sell Price" />
                         <TableColumn fx:id="tblClmProductdate" prefWidth="100.0" text="Date" />
                         <TableColumn fx:id="tblClmProductAddBy" prefWidth="75.0" text="Add By" />
                         <TableColumn fx:id="tblClmProductdescription" prefWidth="202.0" text="Description" />
                     </columns>
-                     <contextMenu>
+<!--                     <contextMenu>
                         <ContextMenu>
                           <items>
-                            <MenuItem fx:id="miSellSelected" mnemonicParsing="false" onAction="#miSellSelectedOnAction" text="Sell It" />
+                            <MenuItem fx:id="miSellSelected" mnemonicParsing="false" onAction="#StockActionButtonClicked" text="Sell It" />
                           </items>
                         </ContextMenu>
-                     </contextMenu>
+                     </contextMenu>-->
                   </TableView>
                </center>
                <bottom>
@@ -62,18 +61,7 @@
                         </HBox>
                      </top>
                      <center>
-                        <AnchorPane fx:id="apCombobox" BorderPane.alignment="CENTER">
-                           <children>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="944.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <ComboBox fx:id="cbSoteViewSupplyer" onAction="#cbSoteViewSupplyerOnAction" onMouseClicked="#cbSoteViewSupplyerOnClick" prefWidth="150.0" promptText="Supplier" />
-                                    <ComboBox fx:id="cbSoteViewBrands" onAction="#cbSoteViewBrandOnAction" onMouseClicked="#cbSoteViewBrandOnClick" prefWidth="150.0" promptText="Brands" />
-                                    <ComboBox fx:id="cbSoteViewCatagory" onAction="#cbSoteViewCatagoryOnAction" onMouseClicked="#cbSoteViewCatagoryOnClick" prefWidth="150.0" promptText="Category" />
-                                    <ComboBox fx:id="cbSoteViewRMA" onAction="#cbSoteViewRMAOnAction" onMouseClicked="#cbSoteViewRMAOnClick" prefWidth="150.0" promptText="RMA" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane fx:id="apCombobox" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </top>

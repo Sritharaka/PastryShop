@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="printMe" prefHeight="541.0" prefWidth="859.0" stylesheets="@../../../style/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.ViewSellController">
+<AnchorPane id="AnchorPane" fx:id="printMe" prefHeight="541.0" prefWidth="856.0" stylesheets="@../../../style/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.ViewSellController">
    <children>
       <BorderPane layoutX="238.0" layoutY="136.0" prefHeight="521.0" prefWidth="743.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -21,7 +21,7 @@
          <bottom>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnSellOrder" mnemonicParsing="false" onAction="#print" text="Sell Order" />
+                  <Button fx:id="btnSellOrder" mnemonicParsing="false" onAction="#print" text="Payment" />
                   <Button mnemonicParsing="false" text="Replace" />
                </children>
             </HBox>
@@ -31,8 +31,8 @@
               <columns>
                 <TableColumn fx:id="tblClmSellId" prefWidth="75.0" text=" PaymentId" />
                   <TableColumn fx:id="tblClmProductId" prefWidth="75.0" text="Product Id" />
-                <TableColumn fx:id="tblClmCustomerName" prefWidth="75.0" text="Customer Name" />
-                  <TableColumn fx:id="tblClmSoldDate" prefWidth="85.0" text="Sold Date" />
+                <TableColumn fx:id="tblClmCustomerName" prefWidth="112.0" text="Customer Name" />
+                  <TableColumn fx:id="tblClmSoldDate" prefWidth="48.0" text=" Date" />
                   <TableColumn fx:id="tblClmPursrsPrice" prefWidth="84.0" text="Purses Price" />
                   <TableColumn fx:id="tblClmSellPrice" prefWidth="75.0" text="Sell Price" />
                   <TableColumn fx:id="tblClmQuantity" prefWidth="99.0" text="Quantity" />
