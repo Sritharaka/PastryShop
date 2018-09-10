@@ -73,13 +73,7 @@ public class PaymentController implements Initializable {
                 }
             });
 
-        } catch (SQLException ex) {
-            Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (Exception ex){
             Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -91,13 +85,9 @@ public class PaymentController implements Initializable {
         price.setText(String.format("%s", Integer.parseInt(quantity.getText()) * p.getPrice()));
 
         Stage stage1 = new Stage();
-
         Parent root1 = FXMLLoader.load(getClass().getResource("/Cashier/ViewSell.fxml"));
-
         Scene scene1 = new Scene(root1);
-
         stage1.setScene(scene1);
-
         stage1.show();
     }
 

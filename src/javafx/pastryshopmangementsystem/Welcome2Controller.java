@@ -45,34 +45,29 @@ public class Welcome2Controller implements Initializable {
         if ("Admin2".equals(username.getText()) && ("password").equals(password.getText())) {
             System.out.print("Admin");
 
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/Admin/Admin.fxml"));
-            Scene scene = new Scene(root);
-            ((Node) event.getSource()).getScene().getWindow().hide();
-            stage.setScene(scene);
-            stage.show();
-            this.showMessage();
+            ShowNextScreen(event, "/Admin/Admin.fxml");
         } else if ("Cashier".equals(username.getText()) && ("12345").equals(password.getText())) {
 
             System.out.print("log in");
-
-            Stage stage1 = new Stage();
-
-            Parent root1 = FXMLLoader.load(getClass().getResource("/Cashier/Cashier.fxml"));
-
-            Scene scene1 = new Scene(root1);
-
-            stage1.setScene(scene1);
-
-            ((Node) event.getSource()).getScene().getWindow().hide();
-            stage1.show();
-            showMessage();
+            ShowNextScreen(event, "/Cashier/Cashier.fxml");
+           
         } else {
-
+            //#TODO: remove after developed
+            ShowNextScreen(event, "/Cashier/Cashier.fxml");
             System.out.println("Error");
 
         }
 
+    }
+
+    private void ShowNextScreen(ActionEvent event, String url) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource(url));
+        Scene scene = new Scene(root);
+        ((Node) event.getSource()).getScene().getWindow().hide();
+        stage.setScene(scene);
+        stage.show();
+        this.showMessage();
     }
 
     @FXML

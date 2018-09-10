@@ -30,5 +30,5 @@ public class CurrentProduct {
     public String rmaDayes;
     public String supplyerList;
     
-    public ObservableList<Product> currentProductList = FXCollections.observableArrayList();
+    public ObservableList<StockList> currentProductList = FXCollections.observableArrayList();
 }

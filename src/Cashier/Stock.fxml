@@ -16,7 +16,7 @@
                <center>
                   <TableView fx:id="tblViewCurrentStore" editable="true" prefHeight="649.0" prefWidth="725.0" style="-fx-background-color: none; -fx-border-color: none;" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
                     <columns>
-                      <TableColumn fx:id="tblViewUnit" prefWidth="132.0" text="ID" />
+                      <TableColumn fx:id="tblClmProductId" prefWidth="132.0" text="ID" />
                       <TableColumn fx:id="tblClmProductName" prefWidth="151.0" text="NAME" />
                         <TableColumn fx:id="tblClmProductquantity" prefWidth="98.0" text="Quantity" />
                         <TableColumn fx:id="tblClmProductUnit" prefWidth="75.0" text="Unit" />
@@ -61,7 +61,11 @@
                         </HBox>
                      </top>
                      <center>
-                        <AnchorPane fx:id="apCombobox" BorderPane.alignment="CENTER" />
+                        <AnchorPane fx:id="apCombobox" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="addProduct" layoutX="1396.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnAddProductAction" text="Add Product" />
+                           </children>
+                        </AnchorPane>
                      </center>
                   </BorderPane>
                </top>

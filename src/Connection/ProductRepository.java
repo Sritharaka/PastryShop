@@ -5,10 +5,9 @@
  */
 package Connection;
 
-import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,23 +20,37 @@ import models.Product;
  */
 public class ProductRepository implements Repository<Product>{
     
-    private ConnectionManager connectionManager;
+    private final ConnectionManager connectionManager;
     
-    public ProductRepository() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException{
+    public ProductRepository(){
         connectionManager = new ConnectionManager();
-        connectionManager.connect();
+        
     }
 
     @Override
-    public void Insert(String sql) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void Insert(Product product) {
+        PreparedStatement pst;
+        try {
+            connectionManager.connect();
+            pst = connectionManager.conn.prepareStatement("insert into product values(?,?,?,?,?)");
+            pst.setString(1, null);
+            pst.setString(2, product.getName());
+            pst.setString(3, product.getDescription());
+            pst.setString(4, product.getSuppliers());
+            pst.setDouble(5, product.getPrice());          
+            pst.executeUpdate();
+            pst.close();
+            connectionManager.conn.close();
+        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }          
     }
 
     @Override
     public List<Product> Read(String query) {
         List<Product> products = new ArrayList<>();
         try {
-            
+            connectionManager.connect();
             ResultSet rs = connectionManager.executeResults(query);
             
             // iterate through the java resultset
@@ -47,16 +60,51 @@ public class ProductRepository implements Repository<Product>{
                 int id = rs.getInt("ProductID");
                 double price = rs.getDouble("ProductPrice");
                 String name = rs.getString("ProductName");
+                String suppliers = rs.getString("ProductSuppliers");
                 
                 p.setId(id);
                 p.setName(name);
                 p.setPrice(price);
+                p.setSuppliers(suppliers);
                 
+                products.add(p);
+                // print the results
+                 connectionManager.close();
+            }
+            
+        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return products;
+    }
+
+    @Override
+    public List<Product> ReadAll() {
+       List<Product> products = new ArrayList<>();
+        try {
+            connectionManager.connect();
+            ResultSet rs = connectionManager.executeResults("SELECT * FROM Product");
+            
+            // iterate through the java resultset
+            while (rs.next())
+            {
+                Product p = new Product();
+                int id = rs.getInt("ProductID");
+                double price = rs.getDouble("ProductPrice");
+                String name = rs.getString("ProductName");
+                String suppliers = rs.getString("ProductSuppliers");
+                
+                p.setId(id);
+                p.setName(name);
+                p.setPrice(price);
+                p.setSuppliers(suppliers);
+                 
                 products.add(p);
                 // print the results
             }
             
-        } catch (SQLException ex) {
+        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
         

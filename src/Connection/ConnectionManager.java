@@ -6,6 +6,8 @@
 package Connection;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,13 +20,17 @@ public class ConnectionManager {
     private static final String CON_STRING = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
     Connection conn = null;
 
-    public void connect() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        conn =  DriverManager
+    public void connect() throws InstantiationException, IllegalAccessException, SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            conn =  DriverManager
                     .getConnection("jdbc:mysql://localhost:3306/mydb?"
                             + "user=root&password=newrootpassword&useSSL=false");
-
-        System.out.println("Connected!");
+            
+            System.out.println("Connected!");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void execute(String query) throws SQLException {

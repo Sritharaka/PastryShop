@@ -5,7 +5,6 @@
  */
 package Connection;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 /**
@@ -13,6 +12,7 @@ import java.util.List;
  * @author ASUS
  */
 public interface Repository<T> {
-    void Insert(String sql);
-    List<T> Read(String sql);
+    void Insert(T item);
+    List<? extends T> Read(String sql);
+    List<T> ReadAll();
 }

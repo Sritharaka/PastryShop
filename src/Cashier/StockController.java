@@ -5,6 +5,9 @@
  */
 package Cashier;
 
+import Connection.ProductRepository;
+import Connection.StockRepository;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,11 +23,18 @@ import javafx.stage.StageStyle;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import models.CurrentProduct;
 import models.Product;
+import models.StockList;
 
 /**
  * FXML Controller class
@@ -34,6 +44,8 @@ import models.Product;
 public class StockController implements Initializable {
 
     CurrentProduct productCurrent = new CurrentProduct();   
+    
+    private StockRepository stockRepository;
    
     private String usrId;
 
@@ -42,14 +54,7 @@ public class StockController implements Initializable {
     public StackPane spProductContent;
     @FXML
     private TextField tfSearch;
-    @FXML
-    private ComboBox<String> cbSoteViewSupplyer;
-    @FXML
-    private ComboBox<String> cbSoteViewBrands;
-    @FXML
-    private ComboBox<String> cbSoteViewCatagory;
-    @FXML
-    private ComboBox<String> cbSoteViewRMA;
+  
     @FXML
     private Button btnAddNew;
     @FXML
@@ -57,7 +62,7 @@ public class StockController implements Initializable {
     @FXML
     private Button btnDelete;
     @FXML
-    private TableView<Product> tblViewCurrentStore;
+    private TableView<StockList> tblViewCurrentStore;
     @FXML
     private TableColumn<Object, Object> tblClmProductId;
     @FXML
@@ -84,8 +89,8 @@ public class StockController implements Initializable {
     private TableColumn<Object, Object> tblClmProductAddBy;
     @FXML
     private TableColumn<Object, Object> tblClmProductdescription;
-    @FXML
-    private MenuItem miSellSelected;
+//    @FXML
+//    private MenuItem miSellSelected;
 
     String suplyerId;
     String suplyerName;
@@ -111,7 +116,8 @@ public class StockController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        this.stockRepository = new StockRepository();
+        viewStock();
     }
 
     @FXML
@@ -122,7 +128,11 @@ public class StockController implements Initializable {
 
     @FXML
     private void btnAddNewOnAction(ActionEvent event) {
-      
+        try {
+            showStage("/Cashier/stock/AddStock.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -175,7 +185,7 @@ public class StockController implements Initializable {
 
     public void viewDetails() {
         System.out.println("CLCKED");
-        tblViewCurrentStore.setItems(FXCollections.observableArrayList());
+        tblViewCurrentStore.setItems(productCurrent.currentProductList);
         tblClmProductId.setCellValueFactory(new PropertyValueFactory<>("productId"));
         tblClmProductName.setCellValueFactory(new PropertyValueFactory<>("productName"));
         tblClmProductquantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -206,38 +216,32 @@ public class StockController implements Initializable {
         }
     }
 
+    @FXML
+    private void btnAddProductAction(ActionEvent event) throws IOException{
+        this.showStage("/product/AddProduct.fxml");
+    }
+
   
 
 
     @FXML
     private void btnRefreshOnACtion(ActionEvent event) {
-        productCurrent.currentProductList.clear();
+        
         tfSearch.clear();
-        cbSoteViewRMA.getItems().clear();
-        cbSoteViewSupplyer.getItems().clear();
-        cbSoteViewBrands.getItems().clear();
-        cbSoteViewCatagory.getItems().clear();
-        cbSoteViewSupplyer.setPromptText("Select supplier");
-        cbSoteViewBrands.setPromptText("select brands");
-        cbSoteViewCatagory.setPromptText("select category");
-        cbSoteViewRMA.setPromptText("select rma");
+        viewStock();
 
+    }
+
+    private void viewStock() {
+        productCurrent.currentProductList.clear();
         tblViewCurrentStore.setItems(productCurrent.currentProductList);
-        tblClmProductId.setCellValueFactory(new PropertyValueFactory<>("productId"));
+        tblClmProductId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tblClmProductName.setCellValueFactory(new PropertyValueFactory<>("productName"));
         tblClmProductquantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        tblClmProductdescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        tblClmProductSupplyer.setCellValueFactory(new PropertyValueFactory<>("suppliedBy"));
-        tblClmProductBrand.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        tblClmProductCatagory.setCellValueFactory(new PropertyValueFactory<>("catagory"));
-        tblClmProductUnit.setCellValueFactory(new PropertyValueFactory<>("unit"));
-        tblClmProductPursesPrice.setCellValueFactory(new PropertyValueFactory<>("pursesPrice"));
-        tblClmProductSellPrice.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
-        tblClmProductRMA.setCellValueFactory(new PropertyValueFactory<>("rma"));
-        tblClmProductAddBy.setCellValueFactory(new PropertyValueFactory<>("user"));
-        tblClmProductdate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        //view(productCurrent);
-
+        tblClmProductdescription.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
+        tblClmProductSupplyer.setCellValueFactory(new PropertyValueFactory<>("productSuppliers"));
+        tblClmProductSellPrice.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
+        productCurrent.currentProductList.addAll(stockRepository.Read(null));
     }
 
     @FXML
@@ -247,6 +251,14 @@ public class StockController implements Initializable {
         } else {
             System.out.println("Noting");
         }
+    }
+    
+    private void showStage(String url) throws IOException{
+        Stage stage1 = new Stage();
+        Parent root1 = FXMLLoader.load(getClass().getResource(url));
+        Scene scene1 = new Scene(root1);
+        stage1.setScene(scene1);
+        stage1.show();
     }
 
 }

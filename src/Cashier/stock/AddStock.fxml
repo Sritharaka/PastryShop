@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.stock.AddStockController">
+    <stylesheets>
+        <URL value="@addstock.css" />
+    </stylesheets>
+    <children>
+      <HBox layoutX="154.0" layoutY="26.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+        
+         <children>
+            <VBox id="labels" prefHeight="392.0" prefWidth="278.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="277.0" text="Product Name" />
+                  <Label text="Stock Description" />
+                  <Label text="Quantity" />
+               </children></VBox>
+            <VBox id="values" prefHeight="238.0" prefWidth="316.0">
+               <children>
+                  <ComboBox fx:id="products" prefHeight="31.0" prefWidth="321.0" promptText="Select Product" />
+                  <TextField fx:id="description" />                  
+                  <TextField fx:id="quantity" />                 
+                  <Button mnemonicParsing="false" onAction="#onAddStockAction" prefHeight="81.0" prefWidth="326.0" text="Add Stock" />
+               </children></VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

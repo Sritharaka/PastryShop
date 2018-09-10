@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="274.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="product.AddProductController">
+    <stylesheets>
+        <URL value="@addproduct.css" />
+    </stylesheets>
+   <children>
+      <HBox layoutX="154.0" layoutY="26.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+         <opaqueInsets>
+            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+         <children>
+            <VBox id="labels" prefHeight="392.0" prefWidth="278.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="277.0" text="Product Name" />
+                  <Label text="Product Description" />
+                  <Label text="Product Suppliers" />
+                  <Label text="Product Price" />
+               </children></VBox>
+            <VBox id="values" prefHeight="238.0" prefWidth="316.0">
+               <children>
+                  <TextField fx:id="productName" />
+                  <TextField fx:id="productDescription" />
+                  <TextField fx:id="productSuppliers" />
+                  <TextField fx:id="productPrice" />
+                  <Button fx:id="addProductBtn" mnemonicParsing="false" onAction="#onAddProductAction" prefHeight="81.0" prefWidth="326.0" text="Add Product" />
+               </children></VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

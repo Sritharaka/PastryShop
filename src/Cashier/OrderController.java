@@ -66,10 +66,7 @@ public class OrderController implements Initializable {
             System.err.println(sqlException);
             //sqlException.printStackTrace();
             message.setText("Order failed");
-        } catch (ClassNotFoundException exceptio) {
-            System.err.println(exceptio);
-            message.setText("Order failed");
-        } catch (Exception e) {
+        }catch (Exception e) {
             System.err.println(e);
             message.setText("Order failed");
         }
