@@ -51,12 +51,7 @@ public class Welcome2Controller implements Initializable {
             System.out.print("log in");
             ShowNextScreen(event, "/Cashier/Cashier.fxml");
            
-        } else {
-            //#TODO: remove after developed
-            ShowNextScreen(event, "/Cashier/Cashier.fxml");
-            System.out.println("Error");
-
-        }
+        } 
 
     }
 

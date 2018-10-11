@@ -51,12 +51,10 @@ public class OrderController implements Initializable {
         String Time = time.getText();
         String Order = order.getText();
         String Quantity = quantity.getText();
-        
-        
 
         try {
             String query = String.format("INSERT INTO mydb.order"
-                    + " values('%s', '%s', '%s', '%s', '%s','%s', '%s', '1', '1')", OrderID, Name, Mobile, Date, Time, Order, Quantity);
+                    + " values('%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')", OrderID, Name, Mobile, Date, Time, Order, Quantity);
 
             connectionManager.connect();
             connectionManager.execute(query);
@@ -64,9 +62,10 @@ public class OrderController implements Initializable {
             message.setText("Order saved");
         } catch (SQLException sqlException) {
             System.err.println(sqlException);
+
             //sqlException.printStackTrace();
             message.setText("Order failed");
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println(e);
             message.setText("Order failed");
         }

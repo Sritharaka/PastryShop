@@ -56,7 +56,7 @@
                                     <Label text="Address :" GridPane.rowIndex="12" />
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="16">
                                        <children>
-                                          <Button fx:id="btnSave" layoutX="75.0" layoutY="3.0" mnemonicParsing="false" text="Save" />
+                                          <Button fx:id="btnSave" layoutX="75.0" layoutY="3.0" mnemonicParsing="false" onAction="#addEmployeSave" text="Save" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="13" GridPane.rowSpan="2">
