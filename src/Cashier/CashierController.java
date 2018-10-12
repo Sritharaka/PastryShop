@@ -29,8 +29,9 @@ public class CashierController implements Initializable {
     private void handleButtonAction(ActionEvent event) throws IOException {
         // Button was clicked, do something...
         System.out.println("abc");
+        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("ViewSell.fxml")));
 
-        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("payment.fxml")));
+//        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("payment.fxml")));
     }
 
     @FXML

@@ -21,7 +21,7 @@
          <bottom>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnSellOrder" mnemonicParsing="false" onAction="#print" text="Payment" />
+                  <Button fx:id="btnSellOrder" mnemonicParsing="false" onAction="#btnPayment" text="Payment" />
                   <Button mnemonicParsing="false" text="Replace" />
                </children>
             </HBox>
@@ -30,19 +30,16 @@
             <TableView fx:id="tblSellView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="tblClmSellId" prefWidth="75.0" text=" PaymentId" />
-                  <TableColumn fx:id="tblClmProductId" prefWidth="75.0" text="Product Id" />
+                <TableColumn fx:id="tblClmProductId" prefWidth="75.0" text="Product Id" />
                 <TableColumn fx:id="tblClmCustomerName" prefWidth="112.0" text="Customer Name" />
-                  <TableColumn fx:id="tblClmSoldDate" prefWidth="48.0" text=" Date" />
-                  <TableColumn fx:id="tblClmPursrsPrice" prefWidth="84.0" text="Purses Price" />
-                  <TableColumn fx:id="tblClmSellPrice" prefWidth="75.0" text="Sell Price" />
-                  <TableColumn fx:id="tblClmQuantity" prefWidth="99.0" text="Quantity" />
-                  <TableColumn fx:id="tblClmTotalPrice" prefWidth="103.0" text="Total Price" />
-                  <TableColumn fx:id="tblClmWarrenty" prefWidth="75.0" text="RMA" />
-                  <TableColumn fx:id="tblClmSoldBy" prefWidth="113.0" text="Sell By" />
+                <TableColumn fx:id="tblClmSoldDate" prefWidth="48.0" text=" Date" />
+                <TableColumn fx:id="tblClmPursrsPrice" prefWidth="84.0" text="Purses Price" />
+                <TableColumn fx:id="tblClmSellPrice" prefWidth="75.0" text="Sell Price" />
+                <TableColumn fx:id="tblClmQuantity" prefWidth="99.0" text="Quantity" />
+                <TableColumn fx:id="tblClmTotalPrice" prefWidth="103.0" text="Total Price" />
+                <TableColumn fx:id="tblClmWarrenty" prefWidth="75.0" text="RMA" />
+                <TableColumn fx:id="tblClmSoldBy" prefWidth="113.0" text="Sell By" />
               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
             </TableView>
          </center>
          <padding>

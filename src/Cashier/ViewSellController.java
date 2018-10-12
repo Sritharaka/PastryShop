@@ -5,7 +5,7 @@
  */
 package Cashier;
 
-import java.util.ListSold;
+//import java.util.ListSold;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,18 +34,19 @@ import print.PrintManager;
 
 
 
+
 public class ViewSellController implements Initializable{
     
-    userNameMedia nameMedia;
-    
-    SellCart sellCart = new SellCart();
-    SellCartGerway sellCartGerway = new SellCartGerway();
+//    userNameMedia nameMedia;
+//    
+//    SellCart sellCart = new SellCart();
+//    SellCartGerway sellCartGerway = new SellCartGerway();
     
     String userId;
     @FXML
     private Button btnSellOrder;
-    @FXML
-    private TableView<ListSold> tblSellView;
+//    @FXML
+//    private TableView<ListSold> tblSellView;
     @FXML
     private TableColumn<Object, Object> tblClmSellId;
     @FXML
@@ -71,23 +72,23 @@ public class ViewSellController implements Initializable{
     @FXML
     private Button btnRefresh;
     
-     public void setNameMedia(userNameMedia nameMedia) {
-        userId = nameMedia.getId();
-        this.nameMedia = nameMedia;
-    }
+//     public void setNameMedia(userNameMedia nameMedia) {
+//        userId = nameMedia.getId();
+//        this.nameMedia = nameMedia;
+//    }
 
 @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tblSellView.setOnMouseClicked((MouseEvent event) -> {
-            System.out.println("Clicked");
-        });
+//        tblSellView.setOnMouseClicked((MouseEvent event) -> {
+//            System.out.println("Clicked");
+//        });
     }
     
      @FXML
     private void btnSellOrderOnAction(ActionEvent event) {
         System.out.println(userId);
-        NewSellController acc = new NewSellController();
-        userNameMedia media = new userNameMedia();
+        //NewSellController acc = new NewSellController();
+        //userNameMedia media = new userNameMedia();
         FXMLLoader fXMLLoader = new FXMLLoader();
         fXMLLoader.setLocation(getClass().getResource("/Cashier/ViewSell.fxml"));
         try {
@@ -95,22 +96,22 @@ public class ViewSellController implements Initializable{
             Parent parent = fXMLLoader.getRoot();
             Scene scene = new Scene(parent);
             scene.setFill(new Color(0, 0, 0, 0));
-            NewSellController newSellController = fXMLLoader.getController();
-            media.setId(userId);
-            newSellController.setNameMedia(nameMedia);
-            newSellController.genarateSellID();
+            //NewSellController newSellController = fXMLLoader.getController();
+//            media.setId(userId);
+//            newSellController.setNameMedia(nameMedia);
+//            newSellController.genarateSellID();
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ViewCustomerController.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ViewCustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     public void viewDetails(){
-        tblSellView.setItems(sellCart.soldList);
+        //tblSellView.setItems(sellCart.soldList);
         tblClmCustomerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         tblClmSellId.setCellValueFactory(new PropertyValueFactory<>("sellId"));
         tblClmProductId.setCellValueFactory(new PropertyValueFactory<>("productGId"));
@@ -121,23 +122,23 @@ public class ViewSellController implements Initializable{
         tblClmTotalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         tblClmWarrenty.setCellValueFactory(new PropertyValueFactory<>("warrentyVoidDate"));
         tblClmSoldBy.setCellValueFactory(new PropertyValueFactory<>("sellerName"));
-        sellCartGerway.firstTenView(sellCart);
+        //sellCartGerway.firstTenView(sellCart);
     }
 
     @FXML
     private void tfSearchOnKeyReleased(KeyEvent event) {
-        tblSellView.getItems().clear();
-        sellCart.sellID = tfSearch.getText();
-        sellCartGerway.searchView(sellCart);
+//        tblSellView.getItems().clear();
+//        sellCart.sellID = tfSearch.getText();
+//        sellCartGerway.searchView(sellCart);
     }
     
     
       @FXML
     private void btnRefreshOnAction(ActionEvent event) {
-        tblSellView.getItems().clear();
+        //tblSellView.getItems().clear();
         tfSearch.clear();
-        sellCart.carts.clear();
-        tblSellView.setItems(sellCart.soldList);
+       // sellCart.carts.clear();
+        //tblSellView.setItems(sellCart.soldList);
         tblClmCustomerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         tblClmSellId.setCellValueFactory(new PropertyValueFactory<>("sellId"));
         tblClmProductId.setCellValueFactory(new PropertyValueFactory<>("productGId"));
@@ -148,14 +149,14 @@ public class ViewSellController implements Initializable{
         tblClmTotalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         tblClmWarrenty.setCellValueFactory(new PropertyValueFactory<>("warrentyVoidDate"));
         tblClmSoldBy.setCellValueFactory(new PropertyValueFactory<>("sellerName"));
-        sellCartGerway.view(sellCart);
+        //sellCartGerway.view(sellCart);
     }
     
-    @FXML
-    private AnchorPane printMe;
-    private void print(ActionEvent event){
-        PrintManager manager = new PrintManager();
-        manager.pageSetup(printMe, (Stage) printMe.getScene().getWindow()); 
+    //private AnchorPane printMe;
+    @FXML    
+    private void btnPayment(ActionEvent event){
+        //PrintManager manager = new PrintManager();
+       // manager.pageSetup(printMe, (Stage) printMe.getScene().getWindow()); 
     }
     
 }
