@@ -72,6 +72,9 @@ public class ViewSellController implements Initializable{
     @FXML
     private Button btnRefresh;
     
+    @FXML
+    private AnchorPane content;
+    
 //     public void setNameMedia(userNameMedia nameMedia) {
 //        userId = nameMedia.getId();
 //        this.nameMedia = nameMedia;
@@ -154,7 +157,9 @@ public class ViewSellController implements Initializable{
     
     //private AnchorPane printMe;
     @FXML    
-    private void btnPayment(ActionEvent event){
+    private void btnPayment(ActionEvent event)throws IOException{
+        
+        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("payment.fxml")));
         //PrintManager manager = new PrintManager();
        // manager.pageSetup(printMe, (Stage) printMe.getScene().getWindow()); 
     }

@@ -41,6 +41,14 @@ public class CashierController implements Initializable {
 
         content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("Order.fxml")));
     }
+    
+     @FXML
+    private void ViewOrderAction(ActionEvent event) throws IOException {
+        // Button was clicked, do something...
+        System.out.println("abc");
+
+        content.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getResource("ViewOrder.fxml")));
+    }
 
        @FXML
     private void StockActionButtonClicked(ActionEvent event) throws IOException {
