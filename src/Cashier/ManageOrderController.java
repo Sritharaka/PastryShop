@@ -31,6 +31,7 @@ import javafx.stage.Stage;
  */
 public class ManageOrderController implements Initializable {
 
+  
     @FXML
     private AnchorPane updateLayout;
 
@@ -83,7 +84,52 @@ public class ManageOrderController implements Initializable {
 
     @FXML
     private void btnViewOnAction(ActionEvent event) throws IOException {
+        updateLayout.setVisible(false);
+        String OrderID = "";
+        String Order = "";
+        String Quantity = "";
+        String Name = "";
+        String Mobile = "";
+        String Date = "";
+        String Time = "";
+        String QueryOrderID = queryOrderId.getText();
 
+        if (!QueryOrderID.equals("")) {
+
+            try {
+                String query = String.format("SELECT * FROM mydb.order WHERE OrderID=%s", QueryOrderID);
+
+                connectionManager.connect();//connect with the database
+                ResultSet result = connectionManager.executeResults(query);//retrieve the selected result set
+                if (result.next()) {//check whether result is valid or not, if valid get values
+
+                    OrderID = result.getString("OrderID");
+                    Order = result.getString("OrderItem");
+                    Quantity = result.getString("Quantity");
+                    Name = result.getString("Name");
+                    Mobile = result.getString("Mobile");
+                    Date = result.getString("Date");
+                    Time = result.getString("Time");
+                    
+                    String message = String.format("Order Details: OrderID: %s, OrderItem: %s, Quantity: %s, Name: %s, Mobile: %s, Date: %s, Time: %s",OrderID, Order, Quantity, Name, Mobile, Date, Time);                    
+                    ShowMessage("Order Retrieve Status", message);
+                } else {
+                    ShowMessage("Order Retrieve Status", "Invalid Order Id, Please Enter Valid Order ID");
+                }
+                connectionManager.close();
+
+            } catch (SQLException sqlException) {
+                System.err.println(sqlException);
+
+                //sqlException.printStackTrace();
+                ShowMessage("Order Retrieve Status", "Order Loading Failed, Please Try again");
+            } catch (Exception e) {
+                System.err.println(e);
+                ShowMessage("Order Retrieve  Status", "Order Loading Failed, Please Try again");
+            }
+        } else {
+            ShowMessage("Order Retrieve  Status", "Please Enter Order ID and Try again");
+        }
     }
 
     @FXML
@@ -143,7 +189,7 @@ public class ManageOrderController implements Initializable {
         String Time = inputTime.getText();
 
         try {
-            String query = String.format("UPDATE mydb.order SET OrderID=%s,OrderItem=\"%s\",Quantity=%s,Name=\"%s\",Mobile=\"%s\",Date=\"%s\",Time=\"%s\" WHERE OrderID=%s",OrderID,Order,Quantity,Name,Mobile,Date,Time,QueryOrderID);
+            String query = String.format("UPDATE mydb.order SET OrderID=%s,OrderItem=\"%s\",Quantity=%s,Name=\"%s\",Mobile=\"%s\",Date=\"%s\",Time=\"%s\" WHERE OrderID=%s", OrderID, Order, Quantity, Name, Mobile, Date, Time, QueryOrderID);
 
             connectionManager.connect();
             connectionManager.execute(query);
