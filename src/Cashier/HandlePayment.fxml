@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="content" prefHeight="541.0" prefWidth="856.0" stylesheets="@../../../style/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.HandlePaymentController">
+   <children>
+      <Button fx:id="btnOrderPayment" layoutX="143.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOrderPaymentOnAction" text="Order Payment" />
+      <Button fx:id="btnOtherPayment" layoutX="423.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOtherPaymentOnAction" text="Other Payment" />
+      <AnchorPane fx:id="orderPaymentLayout" layoutX="143.0" layoutY="132.0" prefHeight="200.0" prefWidth="166.0" style="-fx-background-color: #F0F8FF;" visible="false">
+         <children>
+            <Label layoutX="6.0" layoutY="22.0" text="OrderID" />
+            <TextField fx:id="inputOrderID" layoutX="66.0" layoutY="17.0" promptText="Enter Order ID" />
+            <Button layoutX="51.0" layoutY="93.0" mnemonicParsing="false" onAction="#btnOrderCalculateAmountOnAction" text="Calculate Amount" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="otherPaymentLayout" layoutX="423.0" layoutY="132.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F0F8FF;" visible="false">
+         <children>
+            <Label layoutX="4.0" layoutY="23.0" text="Item Code" />
+            <Label layoutX="4.0" layoutY="67.0" text="Quantity" />
+            <TextField fx:id="inputItemCode" layoutX="83.0" layoutY="18.0" />
+            <TextField fx:id="inputQuantity" layoutX="83.0" layoutY="62.0" />
+            <Button layoutX="83.0" layoutY="120.0" mnemonicParsing="false" onAction="#btnOtherPaymentCaluclateAmountOnAction" text="Calculate Amount" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
