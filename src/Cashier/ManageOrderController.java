@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,9 +21,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -31,7 +34,6 @@ import javafx.stage.Stage;
  */
 public class ManageOrderController implements Initializable {
 
-  
     @FXML
     private AnchorPane updateLayout;
 
@@ -110,11 +112,11 @@ public class ManageOrderController implements Initializable {
                     Mobile = result.getString("Mobile");
                     Date = result.getString("Date");
                     Time = result.getString("Time");
-                    
-                    String message = String.format("Order Details: OrderID: %s, OrderItem: %s, Quantity: %s, Name: %s, Mobile: %s, Date: %s, Time: %s",OrderID, Order, Quantity, Name, Mobile, Date, Time);                    
-                    ShowMessage("Order Retrieve Status", message);
+
+                    String message = String.format("Order Details: OrderID: %s, OrderItem: %s, Quantity: %s, Name: %s, Mobile: %s, Date: %s, Time: %s", OrderID, Order, Quantity, Name, Mobile, Date, Time);
+                    ShowInfoMessage("Order Retrieve Status", message);
                 } else {
-                    ShowMessage("Order Retrieve Status", "Invalid Order Id, Please Enter Valid Order ID");
+                    ShowInfoMessage("Order Retrieve Status", "Invalid Order Id, Please Enter Valid Order ID");
                 }
                 connectionManager.close();
 
@@ -122,13 +124,13 @@ public class ManageOrderController implements Initializable {
                 System.err.println(sqlException);
 
                 //sqlException.printStackTrace();
-                ShowMessage("Order Retrieve Status", "Order Loading Failed, Please Try again");
+                ShowInfoMessage("Order Retrieve Status", "Order Loading Failed, Please Try again");
             } catch (Exception e) {
                 System.err.println(e);
-                ShowMessage("Order Retrieve  Status", "Order Loading Failed, Please Try again");
+                ShowInfoMessage("Order Retrieve  Status", "Order Loading Failed, Please Try again");
             }
         } else {
-            ShowMessage("Order Retrieve  Status", "Please Enter Order ID and Try again");
+            ShowInfoMessage("Order Retrieve  Status", "Please Enter Order ID and Try again");
         }
     }
 
@@ -152,9 +154,9 @@ public class ManageOrderController implements Initializable {
                     inputMobile.setText(result.getString("Mobile"));
                     inputDate.setText(result.getString("Date"));
                     inputTime.setText(result.getString("Time"));
-                    ShowMessage("Order Retrieve Status", "Please Update Existing Order");
+                    ShowInfoMessage("Order Retrieve Status", "Please Update Existing Order");
                 } else {
-                    ShowMessage("Order Retrieve Status", "Invalid Order Id, Please Enter Valid Order ID");
+                    ShowInfoMessage("Order Retrieve Status", "Invalid Order Id, Please Enter Valid Order ID");
                 }
                 connectionManager.close();
 
@@ -162,19 +164,50 @@ public class ManageOrderController implements Initializable {
                 System.err.println(sqlException);
 
                 //sqlException.printStackTrace();
-                ShowMessage("Order Retrieve Status", "Order Loading Failed, Please Try again");
+                ShowInfoMessage("Order Retrieve Status", "Order Loading Failed, Please Try again");
             } catch (Exception e) {
                 System.err.println(e);
-                ShowMessage("Order Retrieve  Status", "Order Loading Failed, Please Try again");
+                ShowInfoMessage("Order Retrieve  Status", "Order Loading Failed, Please Try again");
             }
         } else {
-            ShowMessage("Order Retrieve  Status", "Please Enter Order ID and Try again");
+            ShowInfoMessage("Order Retrieve  Status", "Please Enter Order ID and Try again");
         }
 
     }
 
     @FXML
     private void btnDeleteOnAction(ActionEvent event) throws IOException {
+        updateLayout.setVisible(false);
+        String QueryOrderID = queryOrderId.getText();
+        if (!QueryOrderID.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Deleting Order");
+            alert.setHeaderText("Confirm");
+            alert.setContentText("Are you sure to delete this item \n to Confirm click ok");
+            alert.initStyle(StageStyle.UNDECORATED);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                try {
+                    String query = String.format("DELETE FROM mydb.order WHERE OrderID=%s", QueryOrderID);
+
+                    connectionManager.connect();
+                    connectionManager.execute(query);
+                    connectionManager.close();
+                    ShowInfoMessage("Update Status", "Deleted Successfully");
+                    ClearAndHideView();
+                } catch (SQLException sqlException) {
+                    System.err.println(sqlException);
+
+                    //sqlException.printStackTrace();
+                    ShowInfoMessage("Update Status", "Deleting Failed, Please Try again");
+                } catch (Exception e) {
+                    System.err.println(e);
+                    ShowInfoMessage("Update Status", "Deleting Failed, Please Try again");
+                }
+            }
+        } else {
+            ShowInfoMessage("Order Retrieve  Status", "Please Enter Order ID and Try again");
+        }
     }
 
     @FXML
@@ -194,16 +227,16 @@ public class ManageOrderController implements Initializable {
             connectionManager.connect();
             connectionManager.execute(query);
             connectionManager.close();
-            ShowMessage("Update Status", "Updated Successfully");
+            ShowInfoMessage("Update Status", "Updated Successfully");
             ClearAndHideView();
         } catch (SQLException sqlException) {
             System.err.println(sqlException);
 
             //sqlException.printStackTrace();
-            ShowMessage("Update Status", "Updated Failed, Please Try again");
+            ShowInfoMessage("Update Status", "Updating Failed, Please Try again");
         } catch (Exception e) {
             System.err.println(e);
-            ShowMessage("Update Status", "Updated Failed, Please Try again");
+            ShowInfoMessage("Update Status", "Updating Failed, Please Try again");
         }
     }
 
@@ -215,7 +248,7 @@ public class ManageOrderController implements Initializable {
         stage1.show();
     }
 
-    private void ShowMessage(String title, String message) {
+    private void ShowInfoMessage(String title, String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle(title);
         //alert.setHeaderText("Look, an Information Dialog");
