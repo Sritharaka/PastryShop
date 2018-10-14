@@ -118,7 +118,7 @@ public class ManageOrderController implements Initializable {
                     Date = result.getString("Date");
                     Time = result.getString("Time");
 
-                    String message = String.format("Order Details: OrderID: %s, OrderItem: %s, Quantity: %s, UnitPrice: %s, Name: %s, Mobile: %s, Date: %s, Time: %s", OrderID, Order, Quantity,UnitPrice, Name, Mobile, Date, Time);
+                    String message = String.format("Order Details: OrderID: %s, OrderItem: %s, Quantity(Kg): %s, UnitPrice: %s, Name: %s, Mobile: %s, Date: %s, Time: %s", OrderID, Order, Quantity,UnitPrice, Name, Mobile, Date, Time);
                     ShowInfoMessage("Order Retrieve Status", message);
                 } else {
                     ShowInfoMessage("Order Retrieve Status", "Invalid Order Id, Please Enter Valid Order ID");

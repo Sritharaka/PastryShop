@@ -71,7 +71,48 @@ public class HandlePaymentController implements Initializable {
 
     @FXML
     private void btnOrderCalculateAmountOnAction(ActionEvent event) {
+        String orderID = inputOrderID.getText();
+        
+        String OrderItem = "";
+        double ItemUnitPrice = 0.0;
+        double totalAmount = 0.0;
+        double actualQuantity = 0.0;
 
+        if (!orderID.equals("")) {
+            try {
+                
+               
+
+                    String query = String.format("SELECT * FROM mydb.order WHERE OrderID=%s", orderID);
+
+                    connectionManager.connect();//connect with the database
+                    ResultSet result = connectionManager.executeResults(query);//retrieve the selected result set
+                    if (result.next()) {//check whether result is valid or not, if valid get values
+                        ItemUnitPrice = Double.parseDouble(result.getString("UnitPrice"));
+                        actualQuantity = Double.parseDouble(result.getString("Quantity"));
+                        OrderItem = result.getString("OrderItem");
+                        totalAmount = ItemUnitPrice * actualQuantity;
+
+                        String message = String.format("Order Item: %s, Quantity: %s, Total Amount: %s", OrderItem, actualQuantity, totalAmount);
+                        ShowInfoMessage("Your Total Payment", message);
+                    } else {
+                        ShowInfoMessage("Payment Calculation Status", "Invalid Item Code, Please Enter Valid Order ID");
+                    }
+                    connectionManager.close();           
+
+            } catch (SQLException sqlException) {
+                System.err.println(sqlException);
+
+                //sqlException.printStackTrace();
+                ShowInfoMessage("Payment Calculation Status", "Payment Calculation Failed, Please Try again");
+            } catch (Exception e) {
+                System.err.println(e);
+               ShowInfoMessage("Payment Calculation Status", "Payment Calculation Failed, Please Try again");
+            }
+
+        } else {
+            ShowInfoMessage("Payment Calculation Status", "Please Enter Valid Order ID and Try again");
+        }
     }
 
     @FXML
@@ -81,11 +122,13 @@ public class HandlePaymentController implements Initializable {
         String ItemName = "";
         double ItemUnitPrice = 0.0;
         double totalAmount = 0.0;
-        int actualQuantity = Integer.parseInt(inputQuantityValue);
+        int actualQuantity = 0;
 
         if (!itemCode.equals("")) {
-            if (actualQuantity > 0) {
-                try {
+            try {
+                actualQuantity = Integer.parseInt(inputQuantityValue);
+                if (actualQuantity >= 0 && !inputQuantityValue.equals("")) {
+
                     String query = String.format("SELECT * FROM mydb.product WHERE ItemCode=%s", itemCode);
 
                     connectionManager.connect();//connect with the database
@@ -98,21 +141,23 @@ public class HandlePaymentController implements Initializable {
                         String message = String.format("Item Name: %s, Quantity: %s, Total Amount: %s", ItemName, actualQuantity, totalAmount);
                         ShowInfoMessage("Your Total Payment", message);
                     } else {
-                        ShowInfoMessage("Payment Calculation Status", "Invalid Order Id, Please Enter Valid Order ID");
+                        ShowInfoMessage("Payment Calculation Status", "Invalid Item Code, Please Enter Valid Order ID");
                     }
                     connectionManager.close();
 
-                } catch (SQLException sqlException) {
-                    System.err.println(sqlException);
-
-                    //sqlException.printStackTrace();
-                    ShowInfoMessage("Payment Calculation Status", "Payment Calculation Failed, Please Try again");
-                } catch (Exception e) {
-                    System.err.println(e);
-                    ShowInfoMessage("Payment Calculation Status", "Payment Calculation Failed, Please Try again");
+                } else {
+                    ShowInfoMessage("Payment Calculation Status", "Please Enter Valid Quantity and Try again");
                 }
-            } else {
+
+            } catch (SQLException sqlException) {
+                System.err.println(sqlException);
+
+                //sqlException.printStackTrace();
+                ShowInfoMessage("Payment Calculation Status", "Payment Calculation Failed, Please Try again");
+            } catch (Exception e) {
+                System.err.println(e);
                 ShowInfoMessage("Payment Calculation Status", "Please Enter Valid Quantity and Try again");
+                inputQuantity.setText("");
             }
 
         } else {
