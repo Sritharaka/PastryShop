@@ -29,6 +29,8 @@ public class OrderController implements Initializable {
     @FXML
     private TextField quantity;
     @FXML
+    private TextField unitPrice;
+    @FXML
     private TextField name;
     @FXML
     private TextField phonenumber;
@@ -47,6 +49,7 @@ public class OrderController implements Initializable {
         String OrderID = orderId.getText();
         String Order = order.getText();
         String Quantity = quantity.getText();
+        String UnitPrice = unitPrice.getText();
         String Name = name.getText();
         String Mobile = phonenumber.getText();
         String Date = date.getText();
@@ -56,7 +59,7 @@ public class OrderController implements Initializable {
 
         try {
             String query = String.format("INSERT INTO mydb.order"
-                    + " values('%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s')", OrderID, Order , Quantity, Name, Mobile, Date, Time, 1, 1);
+                    + " values('%s', '%s', '%s','%s', '%s', '%s','%s', '%s','%s', '%s')", OrderID, Order , Quantity,UnitPrice, Name, Mobile, Date, Time, 1, 1);
 
             connectionManager.connect();
             connectionManager.execute(query);

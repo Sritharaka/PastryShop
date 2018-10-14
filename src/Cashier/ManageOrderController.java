@@ -60,6 +60,9 @@ public class ManageOrderController implements Initializable {
 
     @FXML
     private TextField inputQuantity;
+    
+    @FXML
+    private TextField inputUnitPrice;
 
     @FXML
     private TextField inputName;
@@ -90,6 +93,7 @@ public class ManageOrderController implements Initializable {
         String OrderID = "";
         String Order = "";
         String Quantity = "";
+        String UnitPrice = "";
         String Name = "";
         String Mobile = "";
         String Date = "";
@@ -108,12 +112,13 @@ public class ManageOrderController implements Initializable {
                     OrderID = result.getString("OrderID");
                     Order = result.getString("OrderItem");
                     Quantity = result.getString("Quantity");
+                    UnitPrice = result.getString("UnitPrice");
                     Name = result.getString("Name");
                     Mobile = result.getString("Mobile");
                     Date = result.getString("Date");
                     Time = result.getString("Time");
 
-                    String message = String.format("Order Details: OrderID: %s, OrderItem: %s, Quantity: %s, Name: %s, Mobile: %s, Date: %s, Time: %s", OrderID, Order, Quantity, Name, Mobile, Date, Time);
+                    String message = String.format("Order Details: OrderID: %s, OrderItem: %s, Quantity: %s, UnitPrice: %s, Name: %s, Mobile: %s, Date: %s, Time: %s", OrderID, Order, Quantity,UnitPrice, Name, Mobile, Date, Time);
                     ShowInfoMessage("Order Retrieve Status", message);
                 } else {
                     ShowInfoMessage("Order Retrieve Status", "Invalid Order Id, Please Enter Valid Order ID");
@@ -150,6 +155,7 @@ public class ManageOrderController implements Initializable {
                     inputOrderId.setText(result.getString("OrderID"));
                     inputOrderItem.setText(result.getString("OrderItem"));
                     inputQuantity.setText(result.getString("Quantity"));
+                    inputUnitPrice.setText(result.getString("UnitPrice"));
                     inputName.setText(result.getString("Name"));
                     inputMobile.setText(result.getString("Mobile"));
                     inputDate.setText(result.getString("Date"));
@@ -216,13 +222,14 @@ public class ManageOrderController implements Initializable {
         String OrderID = inputOrderId.getText();
         String Order = inputOrderItem.getText();
         String Quantity = inputQuantity.getText();
+        String UnitPrice = inputUnitPrice.getText();
         String Name = inputName.getText();
         String Mobile = inputMobile.getText();
         String Date = inputDate.getText();
         String Time = inputTime.getText();
 
         try {
-            String query = String.format("UPDATE mydb.order SET OrderID=%s,OrderItem=\"%s\",Quantity=%s,Name=\"%s\",Mobile=\"%s\",Date=\"%s\",Time=\"%s\" WHERE OrderID=%s", OrderID, Order, Quantity, Name, Mobile, Date, Time, QueryOrderID);
+            String query = String.format("UPDATE mydb.order SET OrderID=%s,OrderItem=\"%s\",Quantity=%s,UnitPrice=%s,Name=\"%s\",Mobile=\"%s\",Date=\"%s\",Time=\"%s\" WHERE OrderID=%s", OrderID, Order, Quantity,UnitPrice ,Name, Mobile, Date, Time, QueryOrderID);
 
             connectionManager.connect();
             connectionManager.execute(query);
