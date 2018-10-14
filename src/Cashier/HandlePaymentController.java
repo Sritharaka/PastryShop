@@ -6,6 +6,9 @@
 package Cashier;
 
 import Connection.ConnectionManager;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -43,8 +46,17 @@ public class HandlePaymentController implements Initializable {
 
     @FXML
     private TextField inputQuantity;
+    
+    String OrderPaymentmessage;
+    
+    String OtherPaymentmessage;
 
     private ConnectionManager connectionManager = new ConnectionManager();
+
+    BufferedWriter bw = null;
+    FileWriter fw = null;
+
+    private static final String FILENAME = "F:\\PastryShop\\printPaymentBill.txt";
 
     /**
      * Initializes the controller class.
@@ -55,14 +67,14 @@ public class HandlePaymentController implements Initializable {
     }
 
     @FXML
-    private void btnOrderPaymentOnAction(ActionEvent event) throws IOException{
+    private void btnOrderPaymentOnAction(ActionEvent event) throws IOException {
         otherPaymentLayout.setVisible(false);
         inputOrderID.setText("");
         orderPaymentLayout.setVisible(true);
     }
 
     @FXML
-    private void btnOtherPaymentOnAction(ActionEvent event)throws IOException {
+    private void btnOtherPaymentOnAction(ActionEvent event) throws IOException {
         orderPaymentLayout.setVisible(false);
         inputItemCode.setText("");
         inputQuantity.setText("");
@@ -70,7 +82,7 @@ public class HandlePaymentController implements Initializable {
     }
 
     @FXML
-    private void btnOrderCalculateAmountOnAction(ActionEvent event)throws IOException {
+    private void btnOrderCalculateAmountOnAction(ActionEvent event) throws IOException {
         String orderID = inputOrderID.getText();
 
         String OrderItem = "";
@@ -91,8 +103,8 @@ public class HandlePaymentController implements Initializable {
                     OrderItem = result.getString("OrderItem");
                     totalAmount = ItemUnitPrice * actualQuantity;
 
-                    String message = String.format("Order Item: %s, Quantity: %s, Total Amount: %s", OrderItem, actualQuantity, totalAmount);
-                    ShowInfoMessage("Your Total Payment", message);
+                    OrderPaymentmessage = String.format("Order Item: %s, Quantity: %s, Total Amount: %s", OrderItem, actualQuantity, totalAmount);
+                    ShowInfoMessage("Your Total Payment", OrderPaymentmessage);
                 } else {
                     ShowInfoMessage("Payment Calculation Status", "Invalid Item Code, Please Enter Valid Order ID");
                 }
@@ -114,7 +126,7 @@ public class HandlePaymentController implements Initializable {
     }
 
     @FXML
-    private void btnOtherPaymentCaluclateAmountOnAction(ActionEvent event)throws IOException {
+    private void btnOtherPaymentCaluclateAmountOnAction(ActionEvent event) throws IOException {
         String itemCode = inputItemCode.getText();
         String inputQuantityValue = inputQuantity.getText();
         String ItemName = "";
@@ -136,8 +148,8 @@ public class HandlePaymentController implements Initializable {
                         ItemName = result.getString("ItemName");
                         totalAmount = ItemUnitPrice * actualQuantity;
 
-                        String message = String.format("Item Name: %s, Quantity: %s, Total Amount: %s", ItemName, actualQuantity, totalAmount);
-                        ShowInfoMessage("Your Total Payment", message);
+                        OtherPaymentmessage = String.format("Item Name: %s, Quantity: %s, Total Amount: %s", ItemName, actualQuantity, totalAmount);
+                        ShowInfoMessage("Your Total Payment", OtherPaymentmessage);
                     } else {
                         ShowInfoMessage("Payment Calculation Status", "Invalid Item Code, Please Enter Valid Order ID");
                     }
@@ -163,12 +175,68 @@ public class HandlePaymentController implements Initializable {
         }
     }
 
+    @FXML
+    private void btnPrintOrderBillOnAction(ActionEvent event) throws IOException {
+        SaveToFile(OrderPaymentmessage);
+    }
+    
+    @FXML
+    private void btnPrintOtherBillOnAction(ActionEvent event) throws IOException {
+        SaveToFile(OtherPaymentmessage);
+    }
+
     private void ShowInfoMessage(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         //alert.setHeaderText("Look, an Information Dialog");
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void SaveToFile(String data) {
+        try {
+
+
+            File file = new File(FILENAME);
+
+            // if file doesnt exists, then create it
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            // true = append file
+            fw = new FileWriter(file.getAbsoluteFile(), true);
+            bw = new BufferedWriter(fw);
+            
+            bw.write(data);
+            bw.newLine();
+            
+            ShowInfoMessage("Payment Print is Ready", "Print file is ready, please check F:\\PastryShop directory");
+
+            System.out.println("Done");
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            try {
+
+                if (bw != null) {
+                    bw.close();
+                }
+
+                if (fw != null) {
+                    fw.close();
+                }
+
+            } catch (IOException ex) {
+
+                ex.printStackTrace();
+
+            }
+        }
     }
 
 }
