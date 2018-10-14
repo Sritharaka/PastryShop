@@ -23,57 +23,49 @@ import javafx.scene.control.TextField;
  *
  * @author ASUS
  */
-public class AddEmployeController implements Initializable {
+public class AddSupplierController implements Initializable {
+
+    @FXML
+    private TextField tfSupplyerName;
+    @FXML
+    private TextArea taSupplyerAddress;
+    @FXML
+    private TextArea taSupplyerDescription;
+    @FXML
+    private TextArea taContactNumbers;
+    
+    private ConnectionManager connectionManager = new ConnectionManager();
 
     /**
      * Initializes the controller class.
      */
-    @FXML
-    private TextField tfUserName;
-    @FXML
-    private TextField tfFullName;
-    @FXML
-    private TextField tfEmail;
-    @FXML
-    private TextField tfPhone;
-    @FXML
-    private TextField tfSalary;
-    @FXML
-    private TextField tfPassword;
-    @FXML
-    private TextArea taAddress;
-    @FXML
-    private TextField tfRole;
-
-    private ConnectionManager connectionManager = new ConnectionManager();
-
-    @FXML
-    private void addNewEmployee(ActionEvent event) {
-        String UserName = tfUserName.getText();
-        String FullName = tfFullName.getText();
-        String Phone = tfPhone.getText().toString();
-        String Salary = tfSalary.getText();
-        String Password = tfPassword.getText();
-        String Address = taAddress.getText();
-        String Role = tfRole.getText();
-        String Email = tfEmail.getText();
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }   
+    
+     @FXML
+    private void addNewSupplier(ActionEvent event) {
+        String UserName = tfSupplyerName.getText();
+        String Phone = taContactNumbers.getText().toString();
+        String Address = taSupplyerAddress.getText();
+        String Description = taSupplyerDescription.getText();
 
         try {
-            String query = String.format("INSERT INTO mydb.user"
-                    + " values('%s','%s', '%s', '%s', '%s', '%s','%s', '%s', '%s')",0, UserName, FullName, Email, Phone, Salary, Password, Role,Address);
+            String query = String.format("INSERT INTO mydb.supplier"
+                    + " values('%s','%s', '%s', '%s', '%s')",0, UserName, Phone, Address, Description);
 
             connectionManager.connect();
             connectionManager.execute(query);
             connectionManager.close();
-            ShowInfoMessage("Add Employee Status", "Added Employee Successfully");
+            ShowInfoMessage("Add Supplier Status", "Added Supplier Successfully");
         } catch (SQLException sqlException) {
             System.err.println(sqlException);
-
             //sqlException.printStackTrace();
-           ShowInfoMessage("Add Employee Status", "Adding Employee Failed, Please Try again");
+           ShowInfoMessage("Add Supplier Status", "Adding Supplier Failed, Please Try again");
         } catch (Exception e) {
             System.err.println(e);
-            ShowInfoMessage("Add Employee Status", "Adding Employee Failed, Please Try again");
+            ShowInfoMessage("Add Supplier Status", "Adding Supplier Failed, Please Try again");
         }
     }
 
@@ -87,9 +79,5 @@ public class AddEmployeController implements Initializable {
         alert.showAndWait();
     }
      
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-
+    
 }
