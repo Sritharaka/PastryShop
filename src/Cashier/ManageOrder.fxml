@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="acCustomerMainContent" prefHeight="438.0" prefWidth="431.0" stylesheets="@../../../style/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.ManageOrderController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="50.0" text="Order Id" />
+        <TextField fx:id="queryOrderId" layoutX="169.0" layoutY="44.0" promptText="Enter Order ID" />
+        <Button fx:id="btnView" layoutX="55.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnViewOnAction" text="View Order" />
+        <Button fx:id="btnShowToUpdate" layoutX="169.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnShowToUpdateOnAction" text="Update Order" />
+        <Button fx:id="btnDelete" layoutX="295.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="Delete Order" />
+        <AnchorPane fx:id="updateLayout" layoutX="64.0" layoutY="143.0" prefHeight="327.0" prefWidth="354.0">
+         <children>
+            <Label fx:id="orderId" layoutX="14.0" layoutY="25.0" text="OrderID" />
+            <Label layoutX="14.0" layoutY="61.0" text="Order Item" />
+            <Label layoutX="14.0" layoutY="98.0" text="Order Quantity" />
+            <Label layoutX="14.0" layoutY="131.0" text="Customer Name" />
+            <Label layoutX="14.0" layoutY="164.0" text="Customer Mobile" />
+            <Label layoutX="14.0" layoutY="201.0" text="Order Date" />
+            <Label layoutX="14.0" layoutY="235.0" text="Order Time" />
+            <TextField fx:id="inputOrderId" layoutX="153.0" layoutY="20.0" />
+            <TextField fx:id="inputOrderItem" layoutX="153.0" layoutY="56.0" />
+            <TextField fx:id="inputQuantity" layoutX="153.0" layoutY="93.0" />
+            <TextField fx:id="inputName" layoutX="153.0" layoutY="126.0" />
+            <TextField fx:id="inputMobile" layoutX="153.0" layoutY="159.0" />
+            <TextField fx:id="inputDate" layoutX="153.0" layoutY="196.0" />
+            <TextField fx:id="inputTime" layoutX="153.0" layoutY="230.0" />
+            <Button fx:id="btnUpdate" layoutX="153.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update" />
+         </children></AnchorPane>
+       
+    </children>
+</AnchorPane>

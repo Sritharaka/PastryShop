@@ -23,34 +23,22 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author ASUS
  */
-public class ViewCustomerController implements Initializable {
+public class ManageOrderController implements Initializable {
 
     @FXML
-    private AnchorPane acCustomerMainContent;
+    private AnchorPane updateLayout;
+
     @FXML
-    private TextField tfSearch;
+    private Button btnView;
+
     @FXML
-    private Button btnRefresh;
-    @FXML
-    private Button btnAdd;
-    @FXML
-    private Button btnUpdate;
+    private Button btnShowToUpdate;
+
     @FXML
     private Button btnDelete;
+
     @FXML
-    private TableView<?> tblCustomer;
-    @FXML
-    private TableColumn<?, ?> tblClmName;
-    @FXML
-    private TableColumn<?, ?> tblClmContNo;
-    @FXML
-    private TableColumn<?, ?> tblClmAddres;
-    @FXML
-    private TableColumn<?, ?> tblClmDate;
-    @FXML
-    private TableColumn<?, ?> tblClmAddBy;
-    @FXML
-    private TableColumn<?, ?> tblClmTotalBuy;
+    private Button btnUpdate;
 
     /**
      * Initializes the controller class.
@@ -58,22 +46,15 @@ public class ViewCustomerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void tfSearchOnKeyReleased(KeyEvent event) {
     }
 
     @FXML
-    private void btnRefreshOnAction(ActionEvent event) {
+    private void btnViewOnAction(ActionEvent event) {
+        
     }
 
     @FXML
-    private void btnAddOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnUpdateOnAction(ActionEvent event) {
+    private void btnShowToUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
@@ -81,7 +62,6 @@ public class ViewCustomerController implements Initializable {
     }
 
     @FXML
-    private void tblCustomerOnClick(MouseEvent event) {
+    private void btnUpdateOnAction(ActionEvent event) {
     }
-    
 }

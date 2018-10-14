@@ -21,7 +21,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="369.0" layoutY="228.0" mnemonicParsing="false" onAction="#ViewOrderAction" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: blue;" text="Manage Order" textFill="#e1c8c8">
+      <Button layoutX="369.0" layoutY="228.0" mnemonicParsing="false" onAction="#ViewOrderAction" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: blue;" text="Manage Order" textFill="#e1c8c8">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
