@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -27,62 +28,68 @@ public class AddEmployeController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
     @FXML
-    private TextField username;
+    private TextField tfUserName;
     @FXML
-    private TextField fullname;
+    private TextField tfFullName;
     @FXML
-    private TextField email;
+    private TextField tfEmail;
     @FXML
-    private TextField mobile;
+    private TextField tfPhone;
     @FXML
-    private TextField salary;
+    private TextField tfSalary;
     @FXML
-    private TextField password;
+    private TextField tfPassword;
     @FXML
-    private TextArea address;
+    private TextArea taAddress;
     @FXML
-    
-     private Label message;
+    private TextField tfRole;
 
-    
-    
-  private ConnectionManager connectionManager = new ConnectionManager();
-    
+    private ConnectionManager connectionManager = new ConnectionManager();
+
     @FXML
-    private void handleSaveNewShop(ActionEvent event) {
-        String UserName = username.getText();
-        String FullName = fullname.getText();
-        String Phone = mobile.getText().toString();
-        String Salary = salary.getText();
-        String Password = password.getText();
-        String Address = address.getText();
-        String Email = email.getText();
-        
-        
+    private void addNewEmployee(ActionEvent event) {
+        String UserName = tfUserName.getText();
+        String FullName = tfFullName.getText();
+        String Phone = tfPhone.getText().toString();
+        String Salary = tfSalary.getText();
+        String Password = tfPassword.getText();
+        String Address = taAddress.getText();
+        String Role = tfRole.getText();
+        String Email = tfEmail.getText();
+
         try {
             String query = String.format("INSERT INTO mydb.user"
-                    + " values('%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')", UserName, FullName, Phone, Salary, Password, Address, Email);
+                    + " values('%s','%s', '%s', '%s', '%s', '%s','%s', '%s', '%s')",0, UserName, FullName, Email, Phone, Salary, Password, Role,Address);
 
             connectionManager.connect();
             connectionManager.execute(query);
             connectionManager.close();
-            message.setText("Add Employe");
+            ShowInfoMessage("Add Employee Status", "Added Employee Successfully, Please Try again");
         } catch (SQLException sqlException) {
             System.err.println(sqlException);
-            
+
             //sqlException.printStackTrace();
-            message.setText("Add Employe failed");
-        }catch (Exception e) {
+           ShowInfoMessage("Add Employee Status", "Adding Employee Failed, Please Try again");
+        } catch (Exception e) {
             System.err.println(e);
-            message.setText("Add Employe failed");
+            ShowInfoMessage("Add Employee Status", "Adding Employee Failed, Please Try again");
         }
     }
 
+    
+     private void ShowInfoMessage(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        //alert.setHeaderText("Look, an Information Dialog");
+        alert.setContentText(message);
+
+        alert.showAndWait();
+    }
+     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }

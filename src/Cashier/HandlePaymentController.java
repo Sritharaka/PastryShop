@@ -6,6 +6,7 @@
 package Cashier;
 
 import Connection.ConnectionManager;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,25 +55,24 @@ public class HandlePaymentController implements Initializable {
     }
 
     @FXML
-    private void btnOrderPaymentOnAction(ActionEvent event) {
+    private void btnOrderPaymentOnAction(ActionEvent event) throws IOException{
         otherPaymentLayout.setVisible(false);
         inputOrderID.setText("");
         orderPaymentLayout.setVisible(true);
     }
 
     @FXML
-    private void btnOtherPaymentOnAction(ActionEvent event) {
+    private void btnOtherPaymentOnAction(ActionEvent event)throws IOException {
         orderPaymentLayout.setVisible(false);
         inputItemCode.setText("");
         inputQuantity.setText("");
         otherPaymentLayout.setVisible(true);
-
     }
 
     @FXML
-    private void btnOrderCalculateAmountOnAction(ActionEvent event) {
+    private void btnOrderCalculateAmountOnAction(ActionEvent event)throws IOException {
         String orderID = inputOrderID.getText();
-        
+
         String OrderItem = "";
         double ItemUnitPrice = 0.0;
         double totalAmount = 0.0;
@@ -80,25 +80,23 @@ public class HandlePaymentController implements Initializable {
 
         if (!orderID.equals("")) {
             try {
-                
-               
 
-                    String query = String.format("SELECT * FROM mydb.order WHERE OrderID=%s", orderID);
+                String query = String.format("SELECT * FROM mydb.order WHERE OrderID=%s", orderID);
 
-                    connectionManager.connect();//connect with the database
-                    ResultSet result = connectionManager.executeResults(query);//retrieve the selected result set
-                    if (result.next()) {//check whether result is valid or not, if valid get values
-                        ItemUnitPrice = Double.parseDouble(result.getString("UnitPrice"));
-                        actualQuantity = Double.parseDouble(result.getString("Quantity"));
-                        OrderItem = result.getString("OrderItem");
-                        totalAmount = ItemUnitPrice * actualQuantity;
+                connectionManager.connect();//connect with the database
+                ResultSet result = connectionManager.executeResults(query);//retrieve the selected result set
+                if (result.next()) {//check whether result is valid or not, if valid get values
+                    ItemUnitPrice = Double.parseDouble(result.getString("UnitPrice"));
+                    actualQuantity = Double.parseDouble(result.getString("Quantity"));
+                    OrderItem = result.getString("OrderItem");
+                    totalAmount = ItemUnitPrice * actualQuantity;
 
-                        String message = String.format("Order Item: %s, Quantity: %s, Total Amount: %s", OrderItem, actualQuantity, totalAmount);
-                        ShowInfoMessage("Your Total Payment", message);
-                    } else {
-                        ShowInfoMessage("Payment Calculation Status", "Invalid Item Code, Please Enter Valid Order ID");
-                    }
-                    connectionManager.close();           
+                    String message = String.format("Order Item: %s, Quantity: %s, Total Amount: %s", OrderItem, actualQuantity, totalAmount);
+                    ShowInfoMessage("Your Total Payment", message);
+                } else {
+                    ShowInfoMessage("Payment Calculation Status", "Invalid Item Code, Please Enter Valid Order ID");
+                }
+                connectionManager.close();
 
             } catch (SQLException sqlException) {
                 System.err.println(sqlException);
@@ -107,7 +105,7 @@ public class HandlePaymentController implements Initializable {
                 ShowInfoMessage("Payment Calculation Status", "Payment Calculation Failed, Please Try again");
             } catch (Exception e) {
                 System.err.println(e);
-               ShowInfoMessage("Payment Calculation Status", "Payment Calculation Failed, Please Try again");
+                ShowInfoMessage("Payment Calculation Status", "Payment Calculation Failed, Please Try again");
             }
 
         } else {
@@ -116,7 +114,7 @@ public class HandlePaymentController implements Initializable {
     }
 
     @FXML
-    private void btnOtherPaymentCaluclateAmountOnAction(ActionEvent event) {
+    private void btnOtherPaymentCaluclateAmountOnAction(ActionEvent event)throws IOException {
         String itemCode = inputItemCode.getText();
         String inputQuantityValue = inputQuantity.getText();
         String ItemName = "";
