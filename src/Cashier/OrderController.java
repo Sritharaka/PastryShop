@@ -45,16 +45,18 @@ public class OrderController implements Initializable {
     @FXML
     private void handleSaveNewShop(ActionEvent event) {
         String OrderID = orderId.getText();
-        String Name = name.getText();
-        String Mobile = phonenumber.getText().toString();
-        String Date = date.getText();
-        String Time = time.getText();
         String Order = order.getText();
         String Quantity = quantity.getText();
+        String Name = name.getText();
+        String Mobile = phonenumber.getText();
+        String Date = date.getText();
+        String Time = time.getText();
+        
+        
 
         try {
             String query = String.format("INSERT INTO mydb.order"
-                    + " values('%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')", OrderID, Name, Mobile, Date, Time, Order, Quantity);
+                    + " values('%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s')", OrderID, Order , Quantity, Name, Mobile, Date, Time, 1, 1);
 
             connectionManager.connect();
             connectionManager.execute(query);

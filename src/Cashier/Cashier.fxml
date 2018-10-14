@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="cashire" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.CashierController">
+<AnchorPane id="AnchorPane" fx:id="cashire" prefHeight="795.0" prefWidth="1225.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.CashierController">
    <children>
-      <VBox layoutX="14.0" layoutY="83.0" prefHeight="176.0" prefWidth="119.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="101.0" text="payment" />
-            <Button fx:id="Order" mnemonicParsing="false" onAction="#OrderButtonAction" prefHeight="40.0" prefWidth="101.0" text="Order" />
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="100.0" onAction="#ViewOrderAction" text="View Order" />
-            <Button fx:id="Stock" mnemonicParsing="false" onAction="#StockActionButtonClicked" prefHeight="49.0" prefWidth="101.0" text="Stock" />
-         </children></VBox>
-      <AnchorPane fx:id="content" layoutX="126.0" layoutY="72.0" prefHeight="514.0" prefWidth="860.0" />
+      <ImageView fitHeight="798.0" fitWidth="1215.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pastryshop%20imgs/bakery-791748_960_720.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="content" layoutX="58.0" layoutY="291.0" prefHeight="460.0" prefWidth="1106.0" />
+      <Button fx:id="Order" layoutX="93.0" layoutY="230.0" mnemonicParsing="false" onAction="#OrderButtonAction" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: blue;" text="Order" textFill="#e1c8c8">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="369.0" layoutY="228.0" mnemonicParsing="false" onAction="#ViewOrderAction" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: blue;" text="Manage Order" textFill="#e1c8c8">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="Stock" layoutX="646.0" layoutY="225.0" mnemonicParsing="false" onAction="#StockActionButtonClicked" prefHeight="43.0" prefWidth="129.0" style="-fx-background-color: blue;" text="Stock" textFill="#e1c8c8">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="947.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="129.0" style="-fx-background-color: blue;" text="payment" textFill="#e1c8c8">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="167.0" layoutY="30.0" text="Cashier" underline="true">
+         <font>
+            <Font name="Baskerville Old Face" size="47.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

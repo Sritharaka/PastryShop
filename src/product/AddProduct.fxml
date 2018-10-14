@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
@@ -8,35 +9,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="274.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="product.AddProductController">
-    <stylesheets>
-        <URL value="@addproduct.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="561.0" prefWidth="959.0" style="-fx-background-color: #cec4c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.AddToCartController">
    <children>
-      <HBox layoutX="154.0" layoutY="26.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-         <opaqueInsets>
-            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-         </opaqueInsets>
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </padding>
-         <children>
-            <VBox id="labels" prefHeight="392.0" prefWidth="278.0">
-               <children>
-                  <Label prefHeight="21.0" prefWidth="277.0" text="Product Name" />
-                  <Label text="Product Description" />
-                  <Label text="Product Suppliers" />
-                  <Label text="Product Price" />
-               </children></VBox>
-            <VBox id="values" prefHeight="238.0" prefWidth="316.0">
-               <children>
-                  <TextField fx:id="productName" />
-                  <TextField fx:id="productDescription" />
-                  <TextField fx:id="productSuppliers" />
-                  <TextField fx:id="productPrice" />
-                  <Button fx:id="addProductBtn" mnemonicParsing="false" onAction="#onAddProductAction" prefHeight="81.0" prefWidth="326.0" text="Add Product" />
-               </children></VBox>
-         </children>
-      </HBox>
+      <TextField fx:id="productName" layoutX="480.0" layoutY="31.0" />
+      <TextField fx:id="productPurses" layoutX="480.0" layoutY="62.0" />
+      <TextField fx:id="productBrand" layoutX="480.0" layoutY="93.0" />
+      <TextField fx:id="productCategory" layoutX="480.0" layoutY="124.0" />
+      <TextField fx:id="productDescription" layoutX="480.0" layoutY="155.0" />
+      <TextField fx:id="productSuppliers" layoutX="480.0" layoutY="186.0" />
+      <Button fx:id="addProductBtn" layoutX="404.0" layoutY="460.0" mnemonicParsing="false" onAction="#onAddProductAction" prefHeight="52.0" prefWidth="316.0" style="-fx-background-color: #dd6cbb;" text="Add Product" textFill="#360303">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Label layoutX="92.0" layoutY="36.0" prefHeight="21.0" prefWidth="277.0" text="Product Name" textFill="#2409ee" />
+      <Label layoutX="92.0" layoutY="67.0" text="Product purses" textFill="#5009eb" />
+      <Label layoutX="94.0" layoutY="98.0" text="Product Brand" textFill="#3f10e3" />
+      <Label layoutX="92.0" layoutY="129.0" text="Product Category" textFill="#1f0cf0" />
+      <Label layoutX="94.0" layoutY="160.0" text="Product Description" textFill="#3109e5" />
+      <Label layoutX="92.0" layoutY="191.0" text="Product Suppliers" textFill="#3b0cf0" />
    </children>
 </AnchorPane>

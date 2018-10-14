@@ -23,10 +23,10 @@
                         <TableColumn fx:id="tblClmProductSupplyer" prefWidth="140.0" text="Supplier" />
                         <TableColumn fx:id="tblClmProductBrand" prefWidth="98.0" text="Brand" />
                         <TableColumn fx:id="tblClmProductCatagory" minWidth="0.0" prefWidth="128.0" text="Category" />
-                        <TableColumn fx:id="tblClmProductPursesPrice" prefWidth="153.0" text="Purses Price" />
-                        <TableColumn fx:id="tblClmProductSellPrice" prefWidth="150.0" text="Sell Price" />
+                        <TableColumn fx:id="tblClmProductPursesPrice" prefWidth="153.0" text="Sell Price" />
+                        <TableColumn fx:id="tblClmProductSellPrice" prefWidth="150.0" text="Purses Price" />
                         <TableColumn fx:id="tblClmProductdate" prefWidth="100.0" text="Date" />
-                        <TableColumn fx:id="tblClmProductAddBy" prefWidth="75.0" text="Add By" />
+                        <TableColumn fx:id="tblClmProductAddBy" prefWidth="75.0" text="RMA" />
                         <TableColumn fx:id="tblClmProductdescription" prefWidth="202.0" text="Description" />
                     </columns>
 <!--                     <contextMenu>

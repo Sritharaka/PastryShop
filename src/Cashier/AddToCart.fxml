@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="561.0" prefWidth="959.0" style="-fx-background-color: #cec4c6;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Cashier.AddToCartController">
+   <children>
+      <TextField fx:id="productName" layoutX="480.0" layoutY="31.0" />
+      <TextField fx:id="productPurses" layoutX="480.0" layoutY="62.0" />
+      <TextField fx:id="productBrand" layoutX="480.0" layoutY="93.0" />
+      <TextField fx:id="productCategory" layoutX="480.0" layoutY="124.0" />
+      <TextField fx:id="productDescription" layoutX="480.0" layoutY="155.0" />
+      <TextField fx:id="productSuppliers" layoutX="480.0" layoutY="186.0" />
+      <Button fx:id="addProductBtn" layoutX="404.0" layoutY="460.0" mnemonicParsing="false"  prefHeight="52.0" prefWidth="316.0" style="-fx-background-color: #6e6edd;" text="Add to CART" textFill="#eee5e5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="92.0" layoutY="36.0" prefHeight="21.0" prefWidth="277.0" text="Product Name" textFill="#e40c0c" />
+      <Label layoutX="92.0" layoutY="67.0" text="Product purses" textFill="#eb0909" />
+      <Label layoutX="94.0" layoutY="98.0" text="Product Brand" textFill="#f51010" />
+      <Label layoutX="92.0" layoutY="129.0" text="Product Category" textFill="#f20b0b" />
+      <Label layoutX="94.0" layoutY="160.0" text="Product Description" textFill="#e40707" />
+      <Label layoutX="92.0" layoutY="191.0" text="Product Suppliers" textFill="#f20b0b" />
+   </children>
+</AnchorPane>

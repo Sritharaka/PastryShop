@@ -31,11 +31,22 @@ public class AddStockController implements Initializable {
     @FXML
     private ComboBox<Product> products;
     
+     @FXML
+    private ComboBox<Product> Brands;
+    
     @FXML
     private TextField quantity;
     
     @FXML
     private TextField description;
+    
+     
+    @FXML
+    private TextField Date;
+    
+     
+    @FXML
+    private TextField RMA;
     
     private ProductRepository productRepository;
     private StockRepository stockRepository;
@@ -66,6 +77,7 @@ public class AddStockController implements Initializable {
         Stock item = new Stock();
         item.setProductID(products.getSelectionModel().getSelectedItem().getId());
         item.setQuantity(Integer.parseInt(quantity.getText()));
+        item.setDescription(description.getText());
         item.setDescription(description.getText());
         stockRepository.Insert(item);
         

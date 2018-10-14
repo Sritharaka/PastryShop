@@ -18,15 +18,21 @@
             <VBox id="labels" prefHeight="392.0" prefWidth="278.0">
                <children>
                   <Label prefHeight="21.0" prefWidth="277.0" text="Product Name" />
+                  <Label text="Brand" />
                   <Label text="Stock Description" />
                   <Label text="Quantity" />
+                  <Label text="Date" />
+                  <Label text="RMA" />
                </children></VBox>
             <VBox id="values" prefHeight="238.0" prefWidth="316.0">
                <children>
                   <ComboBox fx:id="products" prefHeight="31.0" prefWidth="321.0" promptText="Select Product" />
+                  <ComboBox fx:id="Brands" prefHeight="31.0" prefWidth="321.0" promptText="Select Brand" />
                   <TextField fx:id="description" />                  
-                  <TextField fx:id="quantity" />                 
-                  <Button mnemonicParsing="false" onAction="#onAddStockAction" prefHeight="81.0" prefWidth="326.0" text="Add Stock" />
+                  <TextField fx:id="quantity" />
+                  <TextField fx:id="Date" />
+                  <TextField fx:id="RMA" />                 
+                  <Button mnemonicParsing="false" onAction="#onAddStockAction" prefHeight="66.0" prefWidth="315.0" text="Add Stock" />
                </children></VBox>
          </children>
       </HBox>
