@@ -143,7 +143,7 @@ public class ManageOrderController implements Initializable {
         String Time = inputTime.getText();
 
         try {
-            String query = String.format("UPDATE mydb.order SET OrderID=%s,Order=%s,Quantity=%s,Name=%s,Mobile=%s,Date=%s,Time=%s WHERE OrderID=%s",OrderID,Order,Quantity,Name,Mobile,Date,Time,QueryOrderID);
+            String query = String.format("UPDATE mydb.order SET OrderID=%s,OrderItem=\"%s\",Quantity=%s,Name=\"%s\",Mobile=\"%s\",Date=\"%s\",Time=\"%s\" WHERE OrderID=%s",OrderID,Order,Quantity,Name,Mobile,Date,Time,QueryOrderID);
 
             connectionManager.connect();
             connectionManager.execute(query);
